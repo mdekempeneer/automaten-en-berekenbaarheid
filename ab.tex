@@ -6,6 +6,11 @@ headinclude,footinclude,
 BCOR5mm,
 ]{scrartcl}
 
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\definecolor{dgreen}{HTML}{00994C}
+
 \input{structure.tex}
 
 \hyphenation{Fortran hy-phen-ation}
@@ -155,7 +160,28 @@ Dit document is tot stand gekomen om een hulp te zijn bij het studeren van het v
 	We gaan nu proberen een contradictie te bekomen door aan te nemen dat de stelling niet waar is. We nemen dus aan dat $Pos_P$ (en dus ook $Neg_P$) beslisbaar is. We gaan nu een beslisser $B$ proberen op te stellen voor $Pos_P$ die deze beslist\footnote{Later zullen we deze $B$ gebruiken om een beslisser $A$ te maken voor $A_{TM}$}. Om $B$ te maken, gaan we eerst een hulpmachine $H_{M,s}$ opstellen.\\\\
 	Deze hulpmachine $H_{M,s}$ heeft een Turingmachine $M$ en een string $s$ in zich. Deze staan vast voor de machine en kunnen dus niet veranderen\footnote{Ze zijn als het ware gehardcoded.}. De input van deze machine is een string $x \in L_X$. Wanneer $H_{M,s}$ gestart wordt, zal deze eerst $M$ laten lopen over $s$. Indien $M$ $s$ reject, zal $H_{M,x}$ \textbf{altijd} rejecten. Indien $M$ $s$ accept, dan zal $H_{M,s}$ overgaan naar fase 2. Hier zal de hulpmachine $X$ over $x$ laten lopen. Indien $X$ $x$ ook accept, dan zal de hulpmachine accepten. Indien $X$ $x$ reject, dan zal ook de hulpmachine rejecten.\\
 	Er zijn nu twee mogelijkheden voor $H_{M,s}$. Indien $M$ $s$ accept, dan gaat $H_{M,s}$ \textbf{altijd} overgaan tot het testen van $x$ in $X$. In dit geval beslist $H_{M,s}$ de volledige taal $L_X$. De andere optie is dat $M$ $s$ reject. In dat geval gaat de hulpmachine \textbf{altijd} rejecten en dus enkel de lege taal accepteren.\\\
-	Laat nu de beslisser $B$ los op $H_{M,s}$. Dit wil zeggen dat de beslisser accept of reject voor de gegeven $M$ en $s$.\\\\
+	Laat nu de beslisser $B$ los op $H_{M,s}$. Dit wil zeggen dat de beslisser accept of reject voor de gegeven $M$ en $s$.\\
+	
+\begin{figure}[h!]
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  %\tikzstyle{every state}=[fill=red,draw=none,text=white]
+
+  \node[state, color=white] (empty) {};
+  \node[state, right of=empty, right=-13mm, inner sep=4.3mm] (A) {};
+  \node[state] (B) [above right of=A, right=10mm, inner sep=4.3mm] {};
+  \node[state] (D) [below right of=A, right=10mm, draw=red] {$reject$};
+  \node[state] (C) [below right of=B, right=10mm, draw=dgreen] {$accept$};
+
+  \path (empty) edge node {x} (A)
+  			(A) edge node [sloped, pos=0.85] {M accepts s} (B)
+  			(A) edge node [sloped, pos=0.1] {M rejects s} (D)
+  			(B) edge node [sloped, pos=0.5, above=0.6mm] {X rejects x} (D)
+  			(B) edge node [sloped, pos=0.1] {X accepts x} (C)
+;
+\end{tikzpicture}
+\caption{Visuele voorstelling van de hulpmachine $H_{M,s}$}
+\end{figure}
 	Stel dat we nu een beslisser $A$ maken voor $A_{TM}$. In dat geval moeten we dus elke $M$ en $s$ in $A_{TM}$ testen. We kunnen dus zeggen dat $A$ accept indien $B$ $H_{M,s}$ accept, anders reject. We bekomen dus de volgende conclusie.
 	\begin{center}
 		$A$ accepts $<M,s>$\\
@@ -168,8 +194,9 @@ Dit document is tot stand gekomen om een hulp te zijn bij het studeren van het v
 		$\Updownarrow$\\
 		$M$ accepts $s$
 	\end{center}
-	Concluse: $A$ is een beslisser voor $A_{TM}$, maar dit is onmogelijk aangezien $A_{TM}$ niet beslisbaar is! Hieruit kunnen we concluderen dat $B$ niet bestaat en dus is $Pos_P$ niet beslisbaar. \textbf{Contradictie}.
+	Conclusie: $A$ is een beslisser voor $A_{TM}$, maar dit is onmogelijk aangezien $A_{TM}$ niet beslisbaar is! Hieruit kunnen we concluderen dat $B$ niet bestaat en dus is $Pos_P$ niet beslisbaar. \textbf{Contradictie}.
 \end{proof}
+
 
 
 \renewcommand{\refname}{\spacedlowsmallcaps{References}}
