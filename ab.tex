@@ -82,47 +82,14 @@ Dit document is tot stand gekomen om een hulp te zijn bij het studeren van het v
 	$A_{TM}$ kan echter niet co-herkenbaar zijn. We bewijzen dit met contradictie. Indien $A_{TM}$ co-herkenbaar is, is deze dus herkenbaar en co-herkenbaar (zie vorig bewijs). Wanneer een taal deze beide eigenschappen bezit, is deze beslisbaar. Dit is een contradictie met het eerste bewijs.
 \end{proof}
 
-\textbf{De stelling van Rice} \vspace{-1mm} \\ \\
-Deze stelling bewijst dat elke taal (die aan bepaalde voorwaarden voldoet) niet-beslisbaar is. Hier gaan we zo dadelijk dieper op in. We moeten eerst de volgende twee definities toelichten alvorens we verder kunnen gaan met het bewijs van $A_{TM}$, gebruik makend van deze stelling (wat korter zal zijn dan voorgaande bewijzen).
+\textbf{De stelling van Rice\footnote{Voor een volledige uitleg van de stelling en het bewijs in verband met deze stelling, bekijk het laatste hoofdstuk.}}
 
-\begin{theorem}[De niet-triviale eigenschap]
-	Een eigenschap $P$ van Turingmachines heet niet-triviaal indien $Pos_P \neq \emptyset$ en ook $Neg_p \neq \emptyset$.
-\end{theorem}
-
-\begin{theorem}[Taal-invariante eigenschap]
-	Een eigenschap $P$ heet taal-invariant indien alle machines die dezelfde taal bepalen, hebben ofwel allemaal $P$, ofwel heeft geen enkele ervan $P$. \\
-	 $$L_{M_1} = L_{M_2} \Rightarrow P(M_1) = P(M_2)$$
-\end{theorem}
-
-\begin{theorem}[Formelere stelling van Rice]
+\begin{theorem}[Stelling van Rice]
 	Voor elke niet-triviale, taal-invariante eigenschap $P$ van Turingmachines geldt dat $Pos_P$ (en ook $Neg_P$) niet beslisbaar is.
 \end{theorem}
 
-\begin{proof}
-	Veronderstel dat $M_\emptyset$ (de machine die de lege taal beslist) de eigenschap $P$ niet heeft - indien dat niet zo is, verander dan $P$ in zijn negatie. Vermits $P$ niet-triviaal is, bestaat er een taal $L_X$ zodat $X$ een Turingmachine is met de eigenschap $P$. Stel dat $Pos_P$ (en dus ook $Neg_P$) beslisbaar id: we zullen een beslisser $B$ voor $Pos_P$ gebruiken om een beslisser $A$ te maken voor $A_{TM}$. $A$ krijgt als input $<M,s>$ en doet het volgende:
-	\begin{enumerate}
-		\item construeer een hulpmachine $H_{M,s}$ die het volgende doet bij input $x$:
-		\begin{enumerate}
-			\item laat $M$ lopen op $s$
-			\item indien $M$ $s$ accepteert, laat dan $X$ lopen op $x$ en accepteer als $X$ $x$ accepteert
-		\end{enumerate}
-		\item laat nu $B$ los op $H_{M,s}$
-		\item als $B$ $H_{M,s}$ accepteert, dan $accept$, anders $reject$
-	\end{enumerate}
-	$H_{M,s}$ accepteert ofwel de lege taal, ofwel $L_X$ (TODO: waarom).\\
-	\begin{center}
-		$A$ \textit{accepteert} $<M,s>$ \\
-		$\Updownarrow$ \\
-		$B$ $H_{M,s}$ \textit{accepteert} \\
-		$\Updownarrow$ \\
-		$H_{M,s}$ \textit{de eigenschap} $P$ \textit{heeft} \\
-		$\Updownarrow$ \\
-		$H_{M,s}$ \textit{accepteert} $L_X$ \\
-		$\Updownarrow$ \\
-		$M$ \textit{accepteert} $s$
-	\end{center}
-	Dus, $A$ is een beslisser voor $A_{TM}$, hetgeen niet kan, dus kan $B$ niet bestaan en $Pos_P$ is niet beslisbaar.
-\end{proof}
+\emph{Dit verband moet nog verder worden uitgewerkt.}
+
 
 \newpage
 \subsection{Reduceerbaarheid}
