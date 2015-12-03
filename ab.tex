@@ -1,0 +1,134 @@
+\documentclass[
+10pt,
+a4paper,
+oneside,
+headinclude,footinclude, 
+BCOR5mm,
+]{scrartcl}
+
+\input{structure.tex}
+
+\hyphenation{Fortran hy-phen-ation}
+
+\title{\normalfont\spacedallcaps{Automata \& Computability}}
+\author{\spacedlowsmallcaps{Jensen Bernard}}
+\date{}
+
+\begin{document}
+
+\renewcommand{\sectionmark}[1]{\markright{\spacedlowsmallcaps{#1}}}
+\lehead{\mbox{\llap{\small\thepage\kern1em\color{halfgray} \vline}\color{halfgray}\hspace{0.5em}\rightmark\hfil}}
+\pagestyle{scrheadings}
+
+\maketitle
+
+\setcounter{tocdepth}{1} % Contents table depth
+
+\tableofcontents
+
+\section*{Abstract} 
+
+Dit document is tot stand gekomen om een hulp te zijn bij het studeren van het vak \textbf{Automaten en Berekenbaarheid}. Het bevat enkel voorbeelden van examenvragen, samen met een uitgewerkte oplossing. In geen enkel geval kan dit document de cursus vervangen. Ik raad aan om de cursus, die verkrijgbaar is via de cursusdienst van \textbf{Scientica}, eerst door te nemen om op zijn minst te weten waarover het gaat. Indien u fouten vind of informatie wil toevoegen, kan dit altijd via Github. Good luck*.
+
+{\let\thefootnote\relax\footnotetext{* \textit{You'll need it.}}}
+
+\newpage 
+
+\section{Voorwoord}
+
+\lipsum[1-3]
+
+\section{Talen en Automaten}
+
+\lipsum[5] 
+
+\section{Talen en Berekenbaarheid}
+
+\subsection{$A_{TM}$ is niet-beslisbaar}
+
+\textbf{Bewijs in detail dat $A_{TM}$ niet beslisbaar is en steun daarbij niet op de stelling van Rice. Zou het helpen als het toegelaten was op de stelling van Rice te steunen? Is $A_{TM}$ herkenbaar? Co-herkenbaar?}
+
+\vspace{5mm}
+\textbf{$A_{TM}$ is niet beslisbaar}
+\begin{proof}
+	Beter bekend als het acceptatieprobleem voor Turingmachines. De geassocieerde taal is 
+	\begin{center}
+	$A_{TM} = \{ <M,s> |$ \textit{$M$ is een Turingmachine en} $ s \in L_M\}$
+	\end{center}
+	Stel er bestaat een beslisser $B$ voor $A_{TM}$. Dat betekent dat bij input $<M,s>$ $B$ accepteert als $M$ bij input $s$ stopt in zijn $q_a$ en verwerpt als $M$ bij input $s$ stopt in zijn $q_r$ of loopt. We schrijven
+	\begin{center}
+		$B(<M,s>)$ \textit{is accept als $M$ $s$ accepteert en anders reject}
+	\end{center}
+	Construeer nu de contradictie machine $C$ met eigenschap:
+	\begin{center}
+		$C(<M>) = opposite(B(<M,M>))$ \textit{voor elke Turingmachine $M$}
+	\end{center}
+	Daarbij is $opposite(accept) = reject$ en $opposite(reject) = accept$. \\
+	Neem nu voor $M$ hierboven $C$ zelf, dan krijgen we:
+	\begin{center}
+		$C(<C>) = opposite(B(<C,C>))$
+	\end{center}		
+	Als $C(<C>) = accept$, dan is $B(<C,C>) = accept$, dan is $opposite(B(<C,C>)) = reject$, dan is $C(<C>) = reject$, dan is $B(<C,C>) = reject$, dan is $opposite(B(<C,C>)) = accept$, dan is $C(<C>) = accept$ \dots \\
+	Dus $C$ kan niet bestaan, dus $B$ bestaat niet. Dus $A_{TM}$ is niet beslisbaar.
+\end{proof} 
+
+\textbf{$A_{TM}$ is herkenbaar}
+\begin{proof}
+	De herkenner $A$ voor $A_{TM}$ laat, met input $<M,x>$, $M$ lopen op $s$. Indien deze $M$ $s$ accepteerd, dan accepteerd $A$ zijn input. Indien deze de input $reject$, of gewoon niet stopt, dan zal $A$ deze ook niet accepteren. $A_{TM}$ is dus herkenbaar.
+\end{proof}
+
+\textbf{$A_{TM}$ is niet co-herkenbaar}
+\begin{proof}
+	$A_{TM}$ kan echter niet co-herkenbaar zijn. We bewijzen dit met contradictie. Indien $A_{TM}$ co-herkenbaar is, is deze dus herkenbaar en co-herkenbaar (zie vorig bewijs). Wanneer een taal deze beide eigenschappen bezit, is deze beslisbaar. Dit is een contradictie met het eerste bewijs.
+\end{proof}
+
+\textbf{De stelling van Rice} \vspace{-1mm} \\ \\
+Deze stelling bewijst dat elke taal (die aan bepaalde voorwaarden voldoet) niet-beslisbaar is. We moeten eerst de volgende twee definities toelichten alvorens we verder kunnen gaan met het bewijs van $A_{TM}$, gebruik makend van deze stelling (wat korter zal zijn als voorgaande bewijzen).
+
+\begin{theorem}[Niet-triviale eigenschap]
+	Een eigenschap $P$ van Turingmachines heet niet-triviaal indien $Pos_P \neq \emptyset$ en ook $Neg_p \neq \emptyset$.
+\end{theorem}
+
+\begin{theorem}[Taal-invariante eigenschap]
+	Een eigenschap $P$ heet taal-invariant indien alle machines die dezelfde taal bepalen, hebben ofwel allemaal $P$, ofwel heeft geen enkele ervan $P$. \\
+	 $$L_{M_1} = L_{M_2} \Rightarrow P(M_1) = P(M_2)$$
+\end{theorem}
+
+\begin{theorem}[Formelere stelling van Rice]
+	Voor elke niet-trivial, taal-invariante eigenschap $P$ van Turingmachines geldt dat $Pos_P$ (en ook $Neg_P$) niet beslisbaar is.
+\end{theorem}
+
+\begin{proof}
+	Veronderstel dat $M_\emptyset$ (de machine die de lege taal beslist) de eigenschap $P$ niet heeft - indien dat niet zo is, verander dan $P$ in zijn negatie. Vermits $P$ niet-triviaal is, bestaat er een taal $L_X$ zodat $X$ een Turingmachine is met de eigenschap $P$. Stel dat $Pos_P$ (en dus ook $Neg_P$) beslisbaar id: we zullen een beslisser $B$ voor $Pos_P$ gebruiken om een beslisser $A$ te maken voor $A_{TM}$. $A$ krijgt als input $<M,s>$ en doet het volgende:
+	\begin{enumerate}
+		\item construeer een hulpmachine $H_{M,s}$ die het volgende doet bij input $x$:
+		\begin{enumerate}
+			\item laat $M$ lopen op $s$
+			\item indien $M$ $s$ accepteert, laat dan $X$ lopen op $x$ en accepteer als $X$ $x$ accepteert
+		\end{enumerate}
+		\item laat nu $B$ los op $H_{M,s}$
+		\item als $B$ $H_{M,s}$ accepteert, dan $accept$, anders $reject$
+	\end{enumerate}
+	$H_{M,s}$ accepteert ofwel de lege taal, ofwel $L_X$ (TODO: waarom). $A$ accepteert $<M,s>$ als en slechts als $B$ $H_{M,s}$ accepteert, als en slechts als $H_{M,s}$ de eigenschap $P$ heeft, als en slechts als $H_{M,s}$ accepteert $L_X$, als en slechts als $M$ accepteert $s$.\\
+	Dus, $A$ is een beslisser voor $A_{TM}$, hetgeen niet kan, dus kan $B$ niet bestaan en $Pos_P$ is niet beslisbaar.
+\end{proof}
+
+\section{Herschrijfsystemen}
+
+\lipsum[4-5]
+
+\section{Andere Rekenparadigma's}
+
+\lipsum[10]
+
+\section{Talen en Complexiteit}
+
+\lipsum[11]
+
+\renewcommand{\refname}{\spacedlowsmallcaps{References}}
+
+\bibliographystyle{unsrt}
+
+\bibliography{sample.bib}
+
+\end{document}
