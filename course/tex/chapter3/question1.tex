@@ -1,0 +1,53 @@
+\begin{question}
+	Bewijs dat $A_{TM}$ niet beslisbaar is en steun daarbij niet op de stelling van \textit{Rice}. Zou het helpen als het toegelaten was op de stelling van \textit{Rice} te steunen? Is $A_{TM}$ herkenbaar? Co-herkenbaar?
+\end{question}
+
+
+\subsubsection*{$A_{TM}$ is niet beslisbaar}
+\begin{proof}
+	Controleren of $A_{TM}$ beslisbaar is, is beter bekend als het acceptatieprobleem voor Turingmachines. De geassocieerde taal ziet er als volgt uit.
+	
+	\begin{pushcenter}
+		$A_{TM} = \{ <M,s> |$ \textit{$M$ is een Turingmachine en} $ s \in L_M\}$
+	\end{pushcenter}
+	
+	Stel er bestaat een beslisser $B$ voor $A_{TM}$. Dat betekent dat bij input $<M,s>$ $B$ accepteert als $M$ bij input $s$ stopt in zijn $q_a$ en verwerpt als $M$ bij input $s$ stopt in zijn $q_r$ of blijft lopen.
+	
+	\begin{pushcenter}
+		$B(<M,s>)$ \textit{is accept als $M$ $s$ accepteert en anders reject}
+	\end{pushcenter}
+	
+	Construeer nu de contradictie machine $C$ met de eigenschap om telkens het tegenovergestelde te accepteren (of te rejecten) van $B$.
+	
+	\begin{pushcenter}
+		$C(<M>) = opposite(B(<M,M>))$ \textit{voor elke Turingmachine $M$}
+	\end{pushcenter}
+	
+	Daarbij is $opposite(accept) = reject$ en $opposite(reject) = accept$. \\
+	Neem nu voor $M$ hierboven $C$ zelf, dan krijgen we de volgende bewering.
+	
+	\begin{pushcenter}
+		$C(<C>) = opposite(B(<C,C>))$
+	\end{pushcenter}		
+	
+	Als $C(<C>) = accept$, dan is $B(<C,C>) = accept$, dan is $opposite(B(<C,C>)) = reject$, dan is $C(<C>) = reject$, dan is $B(<C,C>) = reject$, dan is $opposite(B(<C,C>)) = accept$, dan is $C(<C>) = accept$ \dots \\
+	Dus $C$ kan niet bestaan. Indien $B$ bestaat kan $C$ wel bestaan, dus $B$ bestaat ook niet! $A_{TM}$ is dus niet beslisbaar.
+\end{proof} 
+
+\subsubsection*{$A_{TM}$ is herkenbaar}
+\begin{proof}
+	De herkenner $A$ voor $A_{TM}$ laat, met input $<M,s>$, $M$ lopen op $s$. Indien deze $M$ $s$ accepteerd, dan accepteerd $A$ zijn input. Indien deze de input $reject$, of gewoon niet stopt, dan zal $A$ deze ook niet accepteren. $A_{TM}$ is dus herkenbaar (ook hier zien we dat $A_{TM}$ niet beslisbaar is omdat deze kan blijven lopen).
+\end{proof}
+
+\subsubsection*{$A_{TM}$ is niet co-herkenbaar}
+\begin{proof}
+	$A_{TM}$ kan echter niet co-herkenbaar zijn. We bewijzen dit met contradictie. Indien $A_{TM}$ co-herkenbaar is, is deze dus herkenbaar en co-herkenbaar (zie vorig bewijs). Wanneer een taal deze beide eigenschappen bezit, is deze beslisbaar. Dit is een contradictie met het eerste bewijs.
+\end{proof}
+
+\subsubsection*{De stelling van Rice}
+
+\begin{theorem}[Stelling van Rice]
+	Voor elke niet-triviale, taal-invariante eigenschap $P$ van Turingmachines geldt dat $Pos_P$ (en ook $Neg_P$) niet beslisbaar is.
+\end{theorem}
+
+Met deze stelling zouden we het hele bewijs kunnen inkorten. Door een niet-triviale, taal-invariante eigenschap $P$ te vinden van alle Turingmachines die $A_{TM}$ herkennen, hebben we meteen aangetoond dat de taal in kwestie, $A_{TM}$ niet beslisbaar is.\footnote{Voor meer informatie over het bewijs, zie het laatste hoofdstuk.}

@@ -163,6 +163,8 @@ Dit document is tot stand gekomen om een hulp te zijn bij het studeren van het v
 	Laat nu de beslisser $B$ los op $H_{M,s}$. Dit wil zeggen dat de beslisser accept of reject voor de gegeven $M$ en $s$.\\
 	
 \begin{figure}[h!]
+\centering
+\resizebox{8cm}{!} {
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
                     semithick]
   %\tikzstyle{every state}=[fill=red,draw=none,text=white]
@@ -180,6 +182,7 @@ Dit document is tot stand gekomen om een hulp te zijn bij het studeren van het v
   			(B) edge node [sloped, pos=0.1] {X accepts x} (C)
 ;
 \end{tikzpicture}
+}
 \caption{Visuele voorstelling van de hulpmachine $H_{M,s}$}
 \end{figure}
 	Stel dat we nu een beslisser $A$ maken voor $A_{TM}$. In dat geval moeten we dus elke $M$ en $s$ in $A_{TM}$ testen. We kunnen dus zeggen dat $A$ accept indien $B$ $H_{M,s}$ accept, anders reject. We bekomen dus de volgende conclusie.
