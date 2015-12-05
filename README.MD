@@ -1,6 +1,5 @@
 # a-b
 ##### *Oftewel: "automaten en berekenbaarheid"*
-------
 
 ### Wat ?
 In deze repository vindt u een cursus met de opgeloste examenvragen van het vak [Automaten en Berekenbaarheid (B-KUL-G0P84A)](https://onderwijsaanbod.kuleuven.be/syllabi/n/G0P84AN.htm#activetab=doelstellingen_idm25479952 "A&B ECTS Fiche") aan de KU Leuven, gedoceerd door [Bart Demoen] (http://people.cs.kuleuven.be/~bart.demoen/AB/index.html "Thuisbladzijde Bart Demoen"). De examenvragen komen van de [examenwiki](https://wiki.wina.be/examens/index.php/Automaten_en_Berekenbaarheid) van Wina.
