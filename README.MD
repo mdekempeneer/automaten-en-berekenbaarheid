@@ -10,10 +10,5 @@ Deze bundel streeft er niet naar een vervanging te zijn van de [cursus](http://p
 ### Fout gevonden
 Eerlijk? We waren nochtans zeker dat deze cursus foutloos was. Uiteraard niet. Gebruik de issue tracker om een fout te melden of fork en stuur een pull request. Je ziet maar, wij zijn niet de baas.
 
-### De toekomst
-Op de thuisbladzijde van professor Demoen staan ook nog een heel aantal examenvragen. Deze komen misschien ook nog in deze cursus.
-
 ### Bedankt
-We danken de volgende personen graag voor hun medewerking aan de cursus.
-* [Jensen Bernard](https://github.com/Jense5) - Concept en uitwerking
-* [Robin Haveneers] (https://github.com/RobinHaveneers) - Spellingscorrectie en omzetten van figuren naar Tikz.
+Bedankt aan alle [contributors](https://github.com/Jense5/a-b/graphs/contributors).
