@@ -2,7 +2,17 @@
 	Definieer de enumeratormachine. Bewijs dat elke herkenbare taal kan ge\"enumereerd worden en dat elke taal die door een enumerator wordt ge\"enumereerd ook herkenbaar is. Kan elke beslisbare taal ge\"enumereerd worden? Bespreek in deze context de uitspraak "de verzameling van Turing machines is een herkenbare taal".
 \end{question}
 
-De enumeratormachine is de machine zoals origineel voorgesteld door Alan Turing in 1936. Deze machine bezit deels de Turingmachine zoals we deze al kennen met enkele kleine aanpassingen. Zo heeft de machine ook een outputband, outputmarker en een enumeratortoestand $q_e$. De $\delta$ van de enumerator heeft als signatuur $$Q \times \Gamma \rightarrow Q \times \Gamma \times \Gamma_e \times \{L,R,S\}$$ Met $Q$ de huidige toestang en $\Gamma$ het te lezen symbool. Als output een nieuwe toestand $Q$ en $\Gamma$, samen met $\{L,R,S\}$. Het verschil met de Turingmachine die we eerder hebben gezien is $\Gamma_e$. Dit symbool zal bij overgang geschreven wordt op de outputband. Na het schrijven van $\Gamma_e$ verplaatst de outputmarker zich 1 plaats naar rechts. De output kan dan een string zijn, verschillende strings opgesplitst door een scheidingsteken  of zelfs een oneindige string... Eender hoe, het heeft zin om te spreken over de verzameling (eindige) outputstrings door de enumerator geproduceerd of ge\"enumereerd. Die verzameling is de taal door de enumerator bepaald of ge\"enumereerd. De enumerator mag daarbij dezelfde string meer dan eens op de outputband zetten.
+De enumeratormachine is de machine zoals origineel voorgesteld door Alan Turing in 1936. Deze machine bezit deels de Turingmachine zoals we deze al kennen met enkele kleine aanpassingen. Zo heeft de machine ook een outputband, outputmarker en een enumeratortoestand $q_e$. De $\delta$ van de enumerator heeft als signatuur $$Q \times \Gamma \rightarrow Q \times \Gamma \times \Gamma_e \times \{L,R,S\}$$
+
+Met $Q$ de huidige toestang en $\Gamma$ het te lezen symbool. Als output een nieuwe toestand $Q$ en $\Gamma$, samen met $\{L,R,S\}$. Het verschil met de Turingmachine die we eerder hebben gezien is $\Gamma_e$. Dit symbool zal bij overgang geschreven wordt op de outputband. Na het schrijven van $\Gamma_e$ verplaatst de outputmarker zich 1 plaats naar rechts. De output kan dan een string zijn, verschillende strings opgesplitst door een scheidingsteken  of zelfs een oneindige string... Eender hoe, het heeft zin om te spreken over de verzameling (eindige) outputstrings door de enumerator geproduceerd of ge\"enumereerd. Die verzameling is de taal door de enumerator bepaald of ge\"enumereerd. De enumerator mag daarbij dezelfde string meer dan eens op de outputband zetten.
+
+\vspace{3mm}
+\begin{figure}[h!]
+  \centering
+      \includegraphics[width=0.5\textwidth]{./img/enumerator}
+  \caption{Enumeratormachine.}
+\end{figure}
+\vspace{3mm}
 
 \begin{theorem}
 	De taal door een enumerator bepaald is herkenbaar en elke herkenbare taal wordt door een enumerator ge\"enumereerd. Beide stellingen zullen in aparte bewijzen worden bewezen.
