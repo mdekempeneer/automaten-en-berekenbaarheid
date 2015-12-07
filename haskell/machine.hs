@@ -10,13 +10,16 @@ type States = Int
 type Alphabet = [Char]
 type DecisionTable = [(State, Char, State, Char, Action)]
 
+type Input = String
+data Acceptance = Accept | Reject deriving (Show, Read)
+
 -- Declare important States
 type Start = Int
 type Accept = Int
 type Refuse = Int
 
 -- Declare a Machine
-data Machine = Machine States Alphabet DecisionTable Start Accept Refuse
+data Machine = Machine DecisionTable Start Accept Refuse
                        deriving (Show, Read)
 
 
@@ -28,22 +31,37 @@ data Machine = Machine States Alphabet DecisionTable Start Accept Refuse
 
 
 
-
-
--- Given DT, State and Read-char, return new State, Write-char and LSR Action.
 action :: DecisionTable -> State -> Char -> (State, Char, Action)
 action d s c = head [(s', c', a)|(os, oc, s', c', a) <- d, (==) os s, (==) oc c]
 
--- Execute the write operation followed by a LSR Action.
 execute :: String -> String -> Action -> Char -> (String, String)
 execute s1 s2 action ch = case action of L -> ((init s1), (last s1):ch:(tail s2))
                                          S -> (s1, ch:(tail s2))
                                          R -> ((s1++[ch]), (tail s2))
 
--- Given DT, State, Left- and Rightstring, Return new State and Strings.
-process :: DecisionTable -> State -> String -> String -> (String, String, State)
-process d s s1 s2 = (s1', s2', s') where (s', c, a) = action d s (head s2)
-                                         (s1', s2') = execute s1 s2 a c
+process :: Machine -> State -> Input -> Input -> Acceptance
+process m s "" i2 = process m s "#" i2
+process m s i1 "" = process m s i1 "#"
+process (Machine decisions start accept reject) state a b
+  | (==) state accept = Accept
+  | (==) state reject = Reject
+  | otherwise = process (Machine decisions start accept reject) s' a' b'
+                where  (s', c, act) = action decisions state (head b)
+                       (a', b')     = execute a b act c
+
+determine :: Machine -> Input -> Acceptance
+determine (Machine decisions start accept reject) input =
+  process (Machine decisions start accept reject) start ("") input
+
+
+
+
+
+
+
+
+
+
 
 -- Gives a basic DT to decide {0^n1^n|n>=0}. The start state is 0, acceptance
 -- state is 6 and the trash state is 5. See "Automaten en Berekenbaarheid"
@@ -70,4 +88,4 @@ decisions =  [  (0, '#', 6, '#', S),
 -- "Automaten en Berekenbaarheid" page 99 for a geaphical reprentation of this
 -- Turing machine.
 basicMachine :: Machine
-basicMachine :: Machine 7 ['0','1'] decisions 0 6 5
+basicMachine = Machine decisions 0 6 5
