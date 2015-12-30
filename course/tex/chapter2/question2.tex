@@ -1,0 +1,41 @@
+\begin{question}
+Beschrijf in detail de transformatie van een niet-deterministische eindige toestandsautomaat naar een equivalente deterministische eindige toestandsautomaat. Beschrijf de notie van "equivalentie van automaten" in deze context en argumenteer waarom de transformatie correct is. Bespreek de uitspraak "deze transformatie is (niet?) deterministisch". Kan er zo een DFA bestaan met minder toestanden dan de NFA?
+\end{question}
+
+\subsubsection*{(a) NFA vs DFA}
+Eerst en vooral verklaren we het verschil tussen een NFA en een DFA. \\
+Een \emph{NFA (niet-deterministische eindige automaat)} laat $\epsilon$-overgangen en meerdere bogen met hetzelfde label vanuit dezelfde knoop toe. Dit is dus een bron van niet-determinisme vermits er telkens een keuze gemaakt moet worden en, om alle mogelijkheden uit te proberen, teruggekeerd moet worden op de stappen.  \\
+Een \emph{DFA (deterministische eindige automaat)} kan geen $\epsilon$-overgangen hebben en een symbool van het alfabet $\Sigma$ mag hoogstens op \'e\'en  uitgaande boog per toestand staan. Dit is dus een bron van determinisme. Er kan geen keuze gemaakt worden. Alle overgangen zijn eenduidig gedefini\"eerd.
+
+\subsubsection*{(b) Algoritme}
+Nu bekijken we hoe een NFA kan omgezet worden naar een equivalente DFA.\\
+\begin{proof}
+\textbf{Gegeven:} een NFA = $(Q_n, \Sigma, \delta_n, q_{sn}, F_n)$ \\
+\textbf{Gevraagd:} een DFA = $(Q_d, \Sigma, \delta_d, q_{sd}, F_d)$ zodanig dat de taal bepaald door de NFA gelijk is aan de taal die bepaald wordt door de nieuwe DFA.\\
+\textbf{Constructie:} \\
+Vermits de NFA $\epsilon$-bogen heeft, zullen we enkele van de toestanden van de NFA moeten samennemen. We kunnen dus al stellen dat elke toestand in de DFA een verzameling van toestanden van de NFA zal zijn:
+$$ Q_d =  \mathcal{P}(Q_n)$$
+Verder weten we ook dat de eindtoestand van de DFA altijd een eindtoestand van de NFA bevat:
+$$ F_d = \{S | S \in Q_d, S \cap F_n \neq 0 \}  $$
+Nu rest er ons alleen nog de transitiefunctie $\delta_d$ om uit te werken:
+\begin{itemize}
+\item We weten al dat $\delta_d : (\mathcal{P} (Q_n) \times \Sigma) \rightarrow \mathcal{P}(Q_n)$.
+\item We beginnen met een nieuwe afbeelding in te voeren: $eb: Q_n \rightarrow \mathcal{P}(Q_n)$. Deze functie staat voor \emph{epsilon bereikbaar}. $eb(q)$ is dus de verzameling van toestanden in de NFA die met nul, \'e\'en of meer $\epsilon$-bogen bereikbaar zijn vanuit q.
+\item We gaan nu de definitie van eb liften naar $\mathcal{P}(Q_n)$. Voor een $\mathcal{Q} \in \mathcal{P}(Q_n)$ geldt dat: $eb(\mathcal{Q}) = \cup_{q \in \mathcal{Q}} eb(q)$.
+\item $\delta_n$ liften we op dezelfde manier.
+\end{itemize}
+We defini\"eren $\delta_d$ dan als volgt:
+\begin{itemize}
+\item Vanuit een toestand $\mathcal{Q}$ in de DFA ga je naar de volgende toestand in de DFA door voor elke NFA toestand in $\mathcal{Q}$ eerst de overgangsfunctie van de NFA te volgen, en daarna de $\epsilon$-bogen te volgen. Van al deze resulterende toestandsverzamelingen neem je dan de unie:
+$$ \delta_d(\mathcal{Q},a) = eb(\delta_n(\mathcal{Q},a)) \text{ voor elke } \mathcal{Q} \in Q_d $$
+\item Tenslotte defini\"eren we nog:
+$$ q_{sd} = eb(q_{sn}) $$
+\end{itemize}
+\end{proof}
+
+\subsubsection*{(c) Equivalentie} \todo{TODO}
+\subsubsection*{(d) Deterministische transformatie}
+De transformatie van een NFA naar een DFA is steeds determinisitisch vermits er een eindig aantal toestanden zijn in een NFA. Dit zorgt er voor dat het algoritme steeds eindigt. \todo{kan je niet meerdere DFA's construren uit 1 NFA?}
+\subsubsection*{(e) DFA met minder toestanden dan een NFA}
+Ja het is zeker mogelijk om een equivalente DFA te construeren uit een NFA die minder toestanden bevat dan die NFA. Vaak zal echter het aantal toestanden exponentieel toenemen. \todo{"...This can be performed using the powerset construction, which may lead to an exponential rise in the number of necessary states." (zie wikipedia NFA)}
+Een voorbeeld van een NFA en een equivalente DFA waarbij de DFA minder toestanden heeft dan de NFA: \todo{voorbeeld toevoegen}

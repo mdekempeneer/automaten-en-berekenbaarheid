@@ -11,6 +11,7 @@
 \usepackage{lipsum} 
 \usepackage{float}
 \usepackage[framemethod=default]{mdframed}
+\usepackage{todonotes}
 
 % Question command
 \newtheorem{qtext}{Vraag}
@@ -106,19 +107,7 @@ pagina 30 - 35
 
 \newpage
 
-\begin{question}
-	Beschrijf in detail de transformatie van een niet-deterministische eindige toestandsautomaat naar een equivalente deterministische eindige toestandsautomaat. Beschrijf de notie van "equivalentie van automaten" in deze context en argumenteer waarom de transformatie correct is. Bespreek de uitspraak "deze transformatie is (niet?) deterministisch". Kan er zo een DFA bestaan met minder toestanden dan de NFA?
-\end{question}
-
-pagina 26 - 29
-\begin{itemize}
-	\item DFA vs NFA
-	\item Algoritme
-	\item isomorf vs equivalent: aangezien enkel eb weg is: equivalent
-	\item ebs bogen weg doen
-	\item deterministisch want eindige toestanden
-	\item Ja, zie voorbeeld
-\end{itemize}
+\input{./tex/chapter2/question2}
 
 \newpage
 
