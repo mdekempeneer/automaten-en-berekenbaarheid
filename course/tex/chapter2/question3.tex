@@ -1,0 +1,51 @@
+\begin{question}
+Bewijs dat een eindige toestandsautomaat altijd een taal herkent die door een reguliere expressie wordt beschreven. Doe dat door een eindige toestandsautomaat te transformeren naar een gegeneraliseerde niet-deterministische eindige toestandsautomaat met slechts twee toestanden.
+\end{question}
+
+Voor we hier aan beginnen defini\"eren we de \emph{GNFA} als volgt:
+\begin{theorem}[GNFA]
+Een GNFA (gegeneraliseerde niet-deterministische eindige automaat) is een eindige toestandsmachine met de volgende wijzigingen en beperkingen:
+\begin{enumerate}
+\item Er is slechts 1 eindtoestand $\neq$ starttoestand
+\item Er is juist 1 boog van de starttoestand naar elke andere toestand en er komen geen pijlen aan (buiten de startpijl)
+\item Er is juist 1 boog van elke toestand naar de eindtoestand, maar er vertrekken geen pijlen vanuit de eindtoestand
+\item Tussen elke andere 2 toestanden is er juist 1 boog in beide richtingen
+\item Er is juist 1 boog van elke andere toestand naar zichzelf
+\item De bogen hebben als label een reguliere expressie
+\end{enumerate}
+\end{theorem}
+
+In wat volgt bewijzen we dat een eindige toestandsautomaat altijd een taal herkent die door een reguliere expressie wordt beschreven. We volgen volgend stappenplan:
+$$ \text{NFA} \rightarrow \text{GNFA} \rightarrow \text{GNFA met 2 toestanden} \rightarrow \text{reguliere expressie} $$
+In de opgave spreken ze van een "eindige toestandsautomaat", we gaan er hier echter vanuit dat we starten vanaf een NFA. Dit mag vermits elke DFA omgezet kan worden naar een NFA.
+
+\begin{proof}
+\subsubsection*{(a) NFA $\rightarrow$ GNFA}
+We kunnen onze NFA omzetten naar een GNFA als volgt:
+\begin{enumerate}
+\item Maak een nieuwe starttoestand en een nieuwe (unieke) eindtoestand
+\item Teken $\epsilon$-bogen van de nieuwe begintoestand naar de oude begintoestand en van elke oude eindtoestand naar de nieuwe eindtoestand.
+\item Teken ontbrekende bogen met een $\phi$.
+\item Als er tussen twee toestanden twee of meer parallele gerichte bogen zijn, neem die dan samen met als label de unie van de labels van de parallelle bogen.
+\end{enumerate}
+Nu we een GNFA geconstrueerd hebben moeten we deze reduceren naar een GNFA met 2 toestanden.
+
+\subsubsection*{(b) Reduceren van de GNFA}
+Dit doen we door herhaaldelijk een willekeurige toestand X verschillend van de start- of eindtoestand te kiezen en deze knoop de verwijderen als volgt:
+\begin{enumerate}
+\item Kies toestanden A en B zodat er bogen zijn van: \todo{Figuur?}
+\begin{itemize}
+\item A naar B met label $E_4$
+\item A naar X met label $E_1$
+\item X naar zichzelf met label $E_2$
+\item X naar B met label $E_3$
+\end{itemize}
+\item Vervang het label op de boog van A naar B door $E_4 | E_1 E_2^* E_3$.
+\item Doe dit voor alle koppels A en B
+\item Verwijder de knoop X met alle bogen die erin toekomen of vertrekken.
+\end{enumerate}
+Indien er geen toestanden meer zijn, ga naar stap (c).
+
+\subsubsection*{(c) Bepaal RE}
+De GNFA heeft nu exact 2 toestanden (een start- en eindtoestand) met daartussen 1 boog. Deze boog heeft nu een reguliere expressie als label. Dit is de reguliere expressie die dezelfde taal bepaald als de oorspronkelijke NFA.
+\end{proof}
