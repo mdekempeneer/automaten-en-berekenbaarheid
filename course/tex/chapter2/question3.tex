@@ -1,5 +1,6 @@
 \begin{question}
-Bewijs dat een eindige toestandsautomaat altijd een taal herkent die door een reguliere expressie wordt beschreven. Doe dat door een eindige toestandsautomaat te transformeren naar een gegeneraliseerde niet-deterministische eindige toestandsautomaat met slechts twee toestanden.
+Bewijs dat een eindige toestandsautomaat altijd een taal herkent die door een reguliere expressie wordt beschreven. Doe dat door een eindige toestandsautomaat te transformeren naar een gegeneraliseerde niet-deterministische eindige toestandsautomaat met slechts twee toestanden.\\
+Kan voor een PDA ongeveer hetzelfde gedaan worden door een gegeneraliseerde PDA op te stellen?\\
 \end{question}
 
 Voor we hier aan beginnen defini\"eren we de \emph{GNFA} als volgt:
@@ -14,7 +15,6 @@ Een GNFA (gegeneraliseerde niet-deterministische eindige automaat) is een eindig
 \item De bogen hebben als label een reguliere expressie
 \end{enumerate}
 \end{theorem}
-
 In wat volgt bewijzen we dat een eindige toestandsautomaat altijd een taal herkent die door een reguliere expressie wordt beschreven. We volgen volgend stappenplan:
 $$ \text{NFA} \rightarrow \text{GNFA} \rightarrow \text{GNFA met 2 toestanden} \rightarrow \text{reguliere expressie} $$
 In de opgave spreken ze van een "eindige toestandsautomaat", we gaan er hier echter vanuit dat we starten vanaf een NFA. Dit mag vermits elke DFA omgezet kan worden naar een NFA.
@@ -49,3 +49,4 @@ Indien er geen toestanden meer zijn, ga naar stap (c).
 \subsubsection*{(c) Bepaal RE}
 De GNFA heeft nu exact 2 toestanden (een start- en eindtoestand) met daartussen 1 boog. Deze boog heeft nu een reguliere expressie als label. Dit is de reguliere expressie die dezelfde taal bepaald als de oorspronkelijke NFA.
 \end{proof}
+\todo{bijvraag?}
