@@ -28,6 +28,7 @@ We kunnen onze NFA omzetten naar een GNFA als volgt:
 \item Teken ontbrekende bogen met een $\phi$.
 \item Als er tussen twee toestanden twee of meer parallele gerichte bogen zijn, neem die dan samen met als label de unie van de labels van de parallelle bogen.
 \end{enumerate}
+Deze omzetting van NFA naar GNFA verandert de taal niet. We doen namelijk enkel correct manipulaties van de NFA.\\
 Nu we een GNFA geconstrueerd hebben moeten we deze reduceren naar een GNFA met 2 toestanden.
 
 \subsubsection*{(b) Reduceren van de GNFA}
@@ -49,4 +50,18 @@ Indien er geen toestanden meer zijn, ga naar stap (c).
 \subsubsection*{(c) Bepaal RE}
 De GNFA heeft nu exact 2 toestanden (een start- en eindtoestand) met daartussen 1 boog. Deze boog heeft nu een reguliere expressie als label. Dit is de reguliere expressie die dezelfde taal bepaald als de oorspronkelijke NFA.
 \end{proof}
-\todo{bijvraag?}
+
+\subsubsection*{(d) Extra}
+In wat volgt bewijzen we nog dat de reductie met 1 toestand de verzameling aanvaarde strings niet verandert. Hiervoor moeten we aantonen dat indien s aanvaard werd voor de reductie, deze ook na de reductie aanvaard wordt (1) en indien s niet aanvaard werd voor de reductie, deze na de reductie ook niet aanvaard wordt (2).\\
+\subsubsection*{(1)}
+\begin{proof}
+Als s aanvaard werd door een pad zonder X, wordt s nog steeds aanvaard. Als het pad X bevat zijn er toestanden A en B zodat $AX^n B$ een opeenvolging van toestanden is. De reguliere expressie op bogen AX,XX en XB zijn $E_1$, $E_2$ en $E_3$ en bijgevolg kost van A naar B gaan langs X een stuk string van de vorm $E_1  (E_2)^* E_3$. Deze reguliere expressie staat ook in de boog AB van de nieuwe GNFA.
+\end{proof}
+\subsubsection*{(2)}
+\begin{proof}
+Als s aanvaard wordt door de gereduceerde GNFA dan bevat het acceptatiepad uiteraard alleen toestanden verschillend van X. OP een boog AB staat de reguliere expressie $E_4 | E_1 (E_2)^* E_3$. Die gebruiken betekend een stukje string uitgeven dat voldoet aan $E_4$ of aan $E_1 (E_2)^* E_3$. Dus in de originele GNFA komt dit overeen met ofwel de boog AB volgen ofwel AX,XX (een aantal keer) en XB.\\
+Dus als de string aanvaard wordt door de gereduceerde GNFA wordt hij ook aanvaard door de originele GNFA.
+\end{proof}
+
+\subsubsection*{(e) Kan dit ook met een PDA}
+Hetzelfde kan voor een PDA gedaan worden vermits een FSA een PDA is waar de stapel nooit meespeelt. \todo{controle}
