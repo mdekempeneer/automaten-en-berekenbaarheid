@@ -11,6 +11,7 @@
 \usepackage{lipsum} 
 \usepackage{float}
 \usepackage[framemethod=default]{mdframed}
+\usepackage{todonotes}
 
 % Question command
 \newtheorem{qtext}{Vraag}
@@ -90,57 +91,20 @@ Ik heb vele studenten gehoord die vaak het nut niet inzien van dit vak, of dit t
 De introductie van dit hoofdstuk is op dit moment nog niet geschreven. Wanneer alle vraagstukken uit \emph{Talen en Automaten} klaar zijn, zal hier een overzicht komen van de leerstof die aan bod komt in dit hoofdstuk. Delen waar geen vragen over zijn gesteld maar wel gekend moeten zijn, zullen hier ook opgelijst worden. Zo kan dit hoofdstuk een volledig overzicht bieden van wat er over te kennen valt.
 \newpage
 
-\begin{question}
-	Beschrijf in detail de transformatie van een determinitstische eindige toestandsautomaat naar een equivalente deterministische eindige toestandsautomaat met een minimaal aantal toestanden. Beschrijf de notie van equivalentie van automaten in deze context en argumenteer waarom er geen kleinere equivalente deterministische eindige toestandsautomaat bestaat. Kan een kleinere equivalente niet-deterministische eindige toestandsautomaat bestaan?
-\end{question}
-
-pagina 30 - 35
-\begin{itemize}
-	\item Minimale DFA uitleggen
-	\item f-equivalentie uitleggen
-	\item algoritme
-	\item Extra: bewijs van eindigheid
-	\item Isomorfe dfa's en equivalentie
-	\item geen kleinere indien alles f-verschillend is
-\end{itemize}
+\input{./tex/chapter2/question1}
+\input{./tex/chapter2/question2}
+\input{./tex/chapter2/question3}
+\input{./tex/chapter2/question4}
+\input{./tex/chapter2/question5}
+\input{./tex/chapter2/question6}
+\input{./tex/chapter2/question7}
+\input{./tex/chapter2/question8}
+\input{./tex/chapter2/question9}
+\input{./tex/chapter2/question10}
+\input{./tex/chapter2/question11}
 
 \newpage
 
-\begin{question}
-	Beschrijf in detail de transformatie van een niet-deterministische eindige toestandsautomaat naar een equivalente deterministische eindige toestandsautomaat. Beschrijf de notie van "equivalentie van automaten" in deze context en argumenteer waarom de transformatie correct is. Bespreek de uitspraak "deze transformatie is (niet?) deterministisch". Kan er zo een DFA bestaan met minder toestanden dan de NFA?
-\end{question}
-
-pagina 26 - 29
-\begin{itemize}
-	\item DFA vs NFA
-	\item Algoritme
-	\item isomorf vs equivalent: aangezien enkel eb weg is: equivalent
-	\item ebs bogen weg doen
-	\item deterministisch want eindige toestanden
-	\item Ja, zie voorbeeld
-\end{itemize}
-
-\newpage
-
-\begin{question}
-	Bewijs dat een eindige toestandsautomaat altijd een taal herkent die door een reguliere expressie wordt beschreven. Doe dat door een eindige toestandsautomaat te transformeren naar een gegeneraliseerde niet-deterministische eindige toestandsautomaat met slechts twee toestanden.
-\end{question}
-
-pagina 21 - 25
-
-\newpage
-
-\begin{question}
-	Geef een precieze formulering van het pompend lemma voor reguliere talen en een bewijs ervan. Geef voorbeelden waarbij je laat zien hoe je dat lemma gebruikt om te bewijzen dat een gegeven taal regulier is en om te bewijzen dat een gegeven taal niet regulier is.
-\end{question}
-
-pagina 43 - 45
-
-\newpage
-
-\begin{question}
-	
-\end{question}
 
 \section{Talen en Berekenbaarheid}
 
