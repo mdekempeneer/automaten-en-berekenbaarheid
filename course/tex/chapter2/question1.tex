@@ -1,13 +1,47 @@
 \begin{question}
-Beschrijf in detail de transformatie van een determinitstische eindige toestandsautomaat naar een equivalente deterministische eindige toestandsautomaat met een minimaal aantal toestanden. Beschrijf de notie van equivalentie van automaten in deze context en argumenteer waarom er geen kleinere equivalente deterministische eindige toestandsautomaat bestaat. Kan een kleinere equivalente niet-deterministische eindige toestandsautomaat bestaan?
+Beschrijf in detail de transformatie van een determinitstische eindige toestandsautomaat naar een equivalente deterministische eindige toestandsautomaat met een minimaal aantal toestanden. Beschrijf de notie van equivalentie van automaten in deze context en argumenteer waarom er geen kleinere equivalente deterministische eindige toestandsautomaat bestaat.
 \end{question}
 
-pagina 30 - 35
-\begin{itemize}
-	\item Minimale DFA uitleggen
-	\item f-equivalentie uitleggen
-	\item algoritme
-	\item Extra: bewijs van eindigheid
-	\item Isomorfe dfa's en equivalentie
-	\item geen kleinere indien alles f-verschillend is
-\end{itemize} \todo{TODO}
+\subsubsection*{Minimale DFA}
+
+Voor een gegeven reguliere taal $L$ bestaan er meestal veel DFA's die de taal bepalen. Het is belangrijk om kleine machines te maken aangezien deze effici\"enter te werk gaan. De kleinst mogelijke DFA die de taal $L$ bepaalt, noemen we de minimale DFA. Vooraleer we dieper ingaan op het algoritme om deze minimale DFA op te stellen, moeten we de term \textit{f-equivalentie} uitleggen.
+
+\begin{theorem}[f-equivalentie]
+	Twee toestanden $p$ en $q$ zijn f-gelijk indien $\forall w \in \Sigma^*:\delta^*(p,w) \in F \rightarrow \delta^*(q,w) \in F$. Twee toestanden zijn f-verschillend indien ze niet f-gelijk zijn.
+\end{theorem}
+
+Het vinden van \textit{f-equivalente} toestanden in een DFA is relatief simpel. Om te beginnen weten we dat elke toestand, verschillend van de aanvaardbare eindtoestanden, \textit{f-verschillend} is van de aanvaardbare eindtoestanden. Indien dit niet zo zou zijn, zouden ook de toestanden die geen eindtoestanden zijn, eindtoestanden zijn. Dit is in contradictie met wat we net aannamen.
+
+Daarna kunnen we alle mogelijke koppels van toestanden overlopen en nagaan indien er een string $s$ bestaat, die beide toestanden naar twee f-verschillende toestanden brengen. In dit geval zijn deze toestanden ook f-verschillend. Indien zo een string $s$ niet bestaat, zijn ze f-gelijk.
+
+\subsubsection*{Algoritme}
+
+Het principe van het algoritme is simpel. We beginnen met het verwijderen van alle niet bereikbare toestanden. Hierna gaan we alle \textit{f-equivalente} toestanden samennemen. De volgende stappen leggen het algoritme uit dat er van uit gaat dat alle niet-bereikbare toestanden al weggelaten zijn. Maak hier zeker oefeningen op! Het is praktisch onmogelijk dit goed uit te leggen als je het niet volledig snapt.
+
+\paragraph{Init} Stel een graaf $V$ op, zonder bogen, met alle nodes gelijk aan de toestanden van de DFA. Verbind nu elke node, verschillend van de accepterende eindtoestanden, met alle mogelijk eindtoestanden en label deze met $\epsilon$.
+
+\paragraph{Repeat} Ga nu alle koppels van toestanden af die niet verbonden zijn in onze net opgestelde graaf $V$. Check nu, in de originele DFA, voor elk karakter $\alpha$ in het alfabet, naar welke toestanden de originele toestanden wijzen. Zijn deze twee toestanden verbonden met elkaar in de graaf $V$? Dan hebben we een conflict en voegen we een boog toe tussen de twee originele toestanden in $V$ met label $\alpha$. Ga door tot we geen bogen of labels meer moeten toevoegen.
+
+\paragraph{Final} Stel de complementsgraaf op van de gevonden graaf $V$. De gevonden graaf is een voorstelling van de minimale DFA. Well Done.
+
+\subsubsection*{Kleinere DFA dan de minimale DFA}
+
+Aangezien we weten dat de minimale DFA, bekomen van het algoritme dat we zonet hebben beschreven, geen \textit{f-equivalente} toestanden heeft, kunnen we geen kleinere DFA vinden.
+
+\begin{theorem}
+	Als $DFA_1 = (Q_1,\Sigma,\delta_1,q_s,F_1)$ een machine is zonder onbereikbare toestanden en waaron elke twee toestanden f-verschillend zijn, dan bestaat er geen machine met strikt minder toestanden die dezelfde taal bepaalt.
+\end{theorem}
+
+\begin{proof}
+	Laat de $DFA_1$ als toestanden hebben $\{q_1,...,q_n\}$, waarbij $q_s$ de starttoestand is. Stel dat $DFA_2 = (Q,\Sigma,\delta_2,p_s,F_s)$ minder toestanden heeft dan $DFA_1$.\\
+	
+	Vermits in $DFA_1$ elke toestand bereikbaar is, bestaan er strings $s_i,i=1..n$ zodanig dat $\delta_1^*(q_s,s_i)=q_i$. Vermits $DFA_2$ minder toestanden heeft, moet voor een $i \neq j$ $\delta^*_2(p_s,s_i)=\delta^*_2(p_2,s_j)$. Vermits $q_i$ en $q_j$ \textit{f-verschillend} zijn, bestaat een string $v$ zodanig dat $\delta_1^*(q_i, v)\in F_1 \and \delta^*_1(q_j,v) \notin F_1$ of omgekeerd.\\
+	
+	Dus ook $\delta_1^*(q_i, s_i v)\in F_1 \and \delta^*_1(q_j,s_i v) \notin F_1$ of omgekeerd. Dit betekent dat $DFA_1$ van de strings $s_i v$ en $s_j v$ er juist \'e\'en accepteert.\\
+	
+	Maar: $\delta_2^*(p_s,s_i v) = \delta_2^*(\delta_2^*(p_s,s_i),v) = \delta_2^*(\delta_2^*(p_s,s_j),v) = \delta_2^*(p_s,s_j v)$ hetgeen betekent dat $DFA_2$ ofwel beide strings $s_iv$ en $s_jv$ accepteert, of beide verwerpt.
+\end{proof}
+
+\subsubsection*{Equivalente machines}
+
+We kunnen deze notie van \textit{f-equivalentie} meteen in verband brengen met de equivalentie van automaten. Twee automaten zijn namelijk equivalent indien deze dezefde taal bepalen. We kunnen dus zeggen dat hun start toestanden \textit{f-equivalent} moeten zijn. Indien twee machines equivalent zijn, zijn de minimale DFA's isomorf.

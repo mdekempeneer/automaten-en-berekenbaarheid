@@ -34,7 +34,7 @@ Nu we een GNFA geconstrueerd hebben moeten we deze reduceren naar een GNFA met 2
 \subsubsection*{(b) Reduceren van de GNFA}
 Dit doen we door herhaaldelijk een willekeurige toestand X verschillend van de start- of eindtoestand te kiezen en deze knoop de verwijderen als volgt:
 \begin{enumerate}
-\item Kies toestanden A en B zodat er bogen zijn van: \todo{Figuur?}
+\item Kies toestanden A en B zodat er bogen zijn van: 
 \begin{itemize}
 \item A naar B met label $E_4$
 \item A naar X met label $E_1$
@@ -63,5 +63,5 @@ Als s aanvaard wordt door de gereduceerde GNFA dan bevat het acceptatiepad uiter
 Dus als de string aanvaard wordt door de gereduceerde GNFA wordt hij ook aanvaard door de originele GNFA.
 \end{proof}
 
-\subsubsection*{(e) Kan dit ook met een PDA}
-Hetzelfde kan voor een PDA gedaan worden vermits een FSA een PDA is waar de stapel nooit meespeelt. \todo{controle}
+\subsubsection*{(e) Kan dit ook met een PDA?}
+Dit is mogelijk aangezien we bij gewone FSM's labels samen nemen in een reguliere expressie. Een PDA kan dit ook doen, aangezien we meerdere karakters in \'e\'en enkele keer op de stapel kunnen schrijven (of verwijderen).

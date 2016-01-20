@@ -1,19 +1,17 @@
 \begin{question}
-Beschrijf in detail de transformatie van een niet-deterministische eindige toestandsautomaat naar een equivalente deterministische eindige toestandsautomaat. Beschrijf de notie van "equivalentie van automaten" in deze context en argumenteer waarom de transformatie correct is. Bespreek de uitspraak "deze transformatie is (niet?) deterministisch". Kan er zo een DFA bestaan met minder toestanden dan de NFA?
+Beschrijf in detail de transformatie van een niet-deterministische eindige toestandsautomaat naar een equivalente deterministische eindige toestandsautomaat. Beschrijf de notie van equivalentie van automaten in deze context en argumenteer waarom de transformatie correct is. Bespreek de uitspraak "deze transformatie is (niet?) deterministisch". Kan er zo een DFA bestaan met minder toestanden dan de NFA?
 \end{question}
 
 \subsubsection*{(a) NFA vs DFA}
-Eerst en vooral verklaren we het verschil tussen een NFA en een DFA. \\
-Een \emph{NFA (niet-deterministische eindige automaat)} laat $\epsilon$-overgangen en meerdere bogen met hetzelfde label vanuit dezelfde knoop toe. Dit is dus een bron van niet-determinisme vermits er telkens een keuze gemaakt moet worden en, om alle mogelijkheden uit te proberen, teruggekeerd moet worden op de stappen.  \\
-Een \emph{DFA (deterministische eindige automaat)} kan geen $\epsilon$-overgangen hebben en een symbool van het alfabet $\Sigma$ mag hoogstens op \'e\'en  uitgaande boog per toestand staan. Dit is dus een bron van determinisme. Er kan geen keuze gemaakt worden. Alle overgangen zijn eenduidig gedefini\"eerd.
+
+Een \emph{NFA (niet-deterministische eindige automaat)} laat $\epsilon$-overgangen en meerdere bogen met hetzelfde label vanuit dezelfde knoop toe. Bij een NFA zijn er dus steeds meerdere mogelijkheden voor de volgende stap.  \\
+Een \emph{DFA (deterministische eindige automaat)} kan geen $\epsilon$-overgangen hebben en een symbool van het alfabet $\Sigma$ mag hoogstens op \'e\'en  uitgaande boog per toestand staan. De volgende stap van het proces ligt dus vast en er is maar \'e\'en mogelijkheid.
 
 \subsubsection*{(b) Algoritme}
-Nu bekijken we hoe een NFA kan omgezet worden naar een equivalente DFA.\\
-\begin{proof}
+
 \textbf{Gegeven:} een NFA = $(Q_n, \Sigma, \delta_n, q_{sn}, F_n)$ \\
-\textbf{Gevraagd:} een DFA = $(Q_d, \Sigma, \delta_d, q_{sd}, F_d)$ zodanig dat de taal bepaald door de NFA gelijk is aan de taal die bepaald wordt door de nieuwe DFA.\\
-\textbf{Constructie:} \\
-Vermits de NFA $\epsilon$-bogen heeft, zullen we enkele van de toestanden van de NFA moeten samennemen. We kunnen dus al stellen dat elke toestand in de DFA een verzameling van toestanden van de NFA zal zijn:
+\textbf{Gevraagd:} een DFA = $(Q_d, \Sigma, \delta_d, q_{sd}, F_d)$ zodanig dat $L_{NFA}=L_{DFA}$.\\
+\textbf{Constructie:} Vermits de NFA $\epsilon$-bogen heeft, zullen we enkele van de toestanden van de NFA moeten samennemen. We kunnen dus al stellen dat elke toestand in de DFA een verzameling van toestanden van de NFA zal zijn:
 $$ Q_d =  \mathcal{P}(Q_n)$$
 Verder weten we ook dat de eindtoestand van de DFA altijd een eindtoestand van de NFA bevat:
 $$ F_d = \{S | S \in Q_d, S \cap F_n \neq 0 \}  $$
@@ -31,12 +29,13 @@ $$ \delta_d(\mathcal{Q},a) = eb(\delta_n(\mathcal{Q},a)) \text{ voor elke } \mat
 \item Tenslotte defini\"eren we nog:
 $$ q_{sd} = eb(q_{sn}) $$
 \end{itemize}
-\end{proof}
 
 \subsubsection*{(c) Equivalentie}
-Twee automaten zijn equivalent wanneer ze dezelfde taal aanvaarden. \todo{nog??}
+Twee automaten zijn equivalent wanneer ze dezelfde taal bepalen. Het algoritme dat we zonet hebben beschreven, is in staat om alle $\epsilon$-bogen weg te werken. Deze veranderen niets aan de taal die bepaalt wordt door de automaat.\footnote{Dit moet nog specifieker beantwoord worden.}
+
 \subsubsection*{(d) Deterministische transformatie}
-De transformatie van een NFA naar een DFA is steeds determinisitisch vermits er een eindig aantal toestanden zijn in een NFA. Dit zorgt er voor dat het algoritme steeds eindigt. Uiteraard is dit op isomorfisme na.
+De transformatie van een NFA naar een DFA is steeds determinisitisch vermits er een eindig aantal toestanden zijn in een NFA. Dit zorgt er voor dat het algoritme steeds eindigt.
+
 \subsubsection*{(e) DFA met minder toestanden dan een NFA}
-Ja het is zeker mogelijk om een equivalente DFA te construeren uit een NFA die minder toestanden bevat dan die NFA. \\
-Een voorbeeld van een NFA en een equivalente DFA waarbij de DFA minder toestanden heeft dan de NFA: \todo{toevoegen}
+
+Het is mogelijk om een equivalente DFA te construeren uit een NFA die minder toestanden bevat. Dit is bijvoorbeeld het geval wanneer er meerdere toestanden zijn, die enkel met $\epsilon$-bogen verbonden zijn.

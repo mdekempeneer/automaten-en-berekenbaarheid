@@ -28,10 +28,10 @@ Nu dat de CFG is omgezet heeft elke regel ofwel 2 ofwel 0 niet-terminalen aan de
 
 Voor een bepaalde string s uit L bestaat er steeds een parse tree. Als je uit deze parse tree de onderste takken wegsnoeit hou je een volledige binaire boom over want de CFG staat in Chomsky Normaal Vorm. De hoogte van de boom is minstens gelijk aan $log_2(|s|)$. Het langste enkelvoudige pad van de wortel bevat dus minstens $log_2(|n|)+1$ knopen en als we $s$ lang genoeg kiezen, dan is $log_2(|s|)+1$ groter dan n en bijgevolg moet er op dat langste pad minstens 1 niet-eindsymbool (neem $X$) herhaald worden.\\[0.5cm]
 
-Neem de laagste $X$ ($X_2$) en zijn dichtste herhaling ($X_1$) op dat pad. $X$ is zeker verschillen van het startsymbool.\\\todo{Waarom? Omdat het startsymbool niet meer opgeroepen kan worden en dus niet herhaald kan worden?}
+Neem de laagste $X$ ($X_2$) en zijn dichtste herhaling ($X_1$) op dat pad. $X$ is zeker verschillen van het startsymbool.\\
 We kunnen nu een afleiding construeren van de vorm:
 $$ S \Rightarrow^* u X_2 z \Rightarrow^* u v X_1 y z \Rightarrow^* uvxyz  $$
-In deze afleiding zijn $u,v,x,y,z$ strings uit $\Sigma^*$ en bovendien zijn $v$ en $y$ niet tegelijkertijd leeg, want dan zou men uit $X$ zichzelf kunnen afleiden en dat kan niet wegens de vorm van de grammatica.\todo{???} \\[0.5cm]
+In deze afleiding zijn $u,v,x,y,z$ strings uit $\Sigma^*$ en bovendien zijn $v$ en $y$ niet tegelijkertijd leeg, want dan zou men uit $X$ zichzelf kunnen afleiden en dat kan niet wegens de vorm van de grammatica. \\[0.5cm]
 
 Vermits bovenstaande afleiding geldig is, zijn
 $$ S \Rightarrow^* u X_2 z \Rightarrow^* u x z  $$

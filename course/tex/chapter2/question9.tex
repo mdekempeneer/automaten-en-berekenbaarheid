@@ -2,4 +2,19 @@
 Geef het algoritme om een CFG naar zijn PDA om te zetten en bewijs de correctheid hiervan.
 Volgens een constructie in de cursus worden meerdere elementen per keer gepushed, waarom mag dit?
 \end{question}
-\todo{TODO}
+
+\subsubsection*{Algoritme}
+
+We stellen de PDA op door middel van 3 toestanden. De starttoestand $q_s$, de eindtoestand $q_f$ en een hulptoestand $x$. We trekken slechts \'e\'en boog van $q_s$ naar $x$: die kijkt niet naar de string of stapel, en een marker $\$$ op de stapel, samen met het beginsymbool (meestal $E$). Er is ook slechts \'e\'en boog van $x$ naar $q_f$: die consumeert niks van de string en haalt de marker $\$$ van de stapel. De andere bogen gaan van $x$ naar $x$, de labels corresponderen met:
+\begin{enumerate}
+	\item de symbolen uit het invoeralfabet: voor elke $\alpha \in \Sigma$, is er een boog met label $\alpha, \alpha \rightarrow \epsilon$; die bogen beteken dus: als de top van de stapel gelijk is aan het eerste symbool van de string, consumeer dan beide.
+	\item de regels van de grammatica: voor elke regel $X \rightarrow \gamma$ is er een label $\epsilon,X \rightarrow \gamma$; die bogen betekenen dus: als de top van de stapel een niet-eindsymbool $X$ is, vervan het door de rechterkant $\gamma$ van een regel in de grammatica waarvan $X$ de linkerkant is; $\gamma$ is een rij eind- en niet-eindsymbolen.
+\end{enumerate}
+
+\subsubsection*{Correctheid}
+
+Het algoritme is steeds correct, aangezien het hetzelfde werkt dan we intuitief zouden doen. Het vult steeds een nieuwe expressie in en verwijderd eventuele atomen.\footnote{Ik heb geen flauw idee, send me the answer.}
+
+\subsubsection*{Meerdere elementen pushen}
+
+Het is mogelijk om meerdere elementen in \'e\'en stap pushen, aangezien dit overeenkomt met meerdere $\epsilon, \epsilon \rightarrow \alpha$ stappen.
