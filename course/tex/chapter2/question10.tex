@@ -7,6 +7,8 @@
   Leidt ambiguiteit altijd tot een niet-deterministische PDA? En vice-versa?
 \end{question}
 
+\subsubsection*{Definitie}
+
 \begin{theorem}
   Een push-down automaat is een 6-tal $(Q,\Sigma, \Gamma, \delta, q_s, F)$ waarbij
   \begin{itemize}
@@ -18,3 +20,15 @@
     \item $F \subseteq Q$ is een verzameling eindtoestanden
   \end{itemize}
 \end{theorem}
+
+\subsubsection*{Constructie}
+
+Zie antwoord vorige vraag.
+
+\subsubsection*{Determinisme}
+
+Standaard is een PDA niet deterministisch aangezien het mogelijk is dat er meerdere mogelijkheden zijn. Zo kan er ook een $\epsilon, \epsilon \rightarrow \epsilon$ boog bestaan. Een string wordt aanvaard indien deze eindigt in een aanvaardbare eindtoestand.
+
+\subsubsection*{Ambiguiteit}
+
+Ambiguiteit wil zeggen dan de CFG ambigu is, m.a.w. het is mogelijk een keuze te maken om na te gaan of een string wordt geaccepteerd of niet. Aangezien deze keuze ook moet reflecteren in de corresponderende PDA, is de PDA dus ook niet deterministisch.
