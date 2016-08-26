@@ -1,6 +1,20 @@
 \begin{question}
-Vertel alles wat je weet i.v.m. de Chomsky-hierarchie binnen de 5 minuten. \\
-Zijn de talen van een TM beslisbaar en wat is de tijdscomplexiteit doorheen de Chomsky-hierarchie.
+  Geef de definitie van een PDA. Leg de constructie uit van een PDA voor een gegeven contextvrije taal. Beargumenteer de correctheid.
+  Is die PDA deterministisch?\\
+  Wat is deterministisch precies?\\
+  Wanneer wordt een string door een PDA aanvaardt? En door een CFG?\\
+  Leg uit ambiguiteit van de CFG.\\
+  Leidt ambiguiteit altijd tot een niet-deterministische PDA? En vice-versa?
 \end{question}
 
-\textit{Deze vraag hoort bij hoofdstuk 6.}
+\begin{theorem}
+  Een push-down automaat is een 6-tal $(Q,\Sigma, \Gamma, \delta, q_s, F)$ waarbij
+  \begin{itemize}
+    \item Q is een eindige verzameling toestanden
+    \item $\sigma$ is een eindig inputalfabet
+    \item $\Gamma$ is een eindig stapelalfabet
+    \item $\delta$ is een overgangsfunctie met signatuur $Q \times \Sigma_\epsilon \times \Gamma_\epsilon \rightarrow \mathcal{P}(Q \times \Gamma_\epsilon)$
+    \item $q_s$ is de starttoestand
+    \item $F \subseteq Q$ is een verzameling eindtoestanden
+  \end{itemize}
+\end{theorem}

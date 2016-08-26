@@ -26,12 +26,7 @@ Stel dat $q_i$ en $q_j$ gelijk zijn met $i<j \leq d$ dan nemen we $x=a_1a_2\hdot
 
 Met het pompend lemma kan je \emph{niet} bewijzen dat een taal regulier is. De stelling zegt immers niet dat als het pompend lemma geldt de taal sowieso regulier is. Er kunnen nog andere condities van een reguliere taal niet voldaan zijn.
 Je kan echter wel aantonen dat een taal niet-regulier is door een contradictie te bewijzen met de stelling hierboven.\\
-Een soortgelijk bewijs heeft steeds de volgende structuur:
-\begin{itemize}
-\item Kies een willekeurig getal als pomplengte d
-\item bestaat er een string langer dan d
-\item waarvoor \textbf{elke} opdeling pompen verhinderd
-\end{itemize}
+Een soortgelijk bewijs heeft steeds de volgende structuur: kies een willekeurig getal als pomplengte d, bestaat er een string langer dan d waarvoor \emph{elke} opdeling pompen verhinderd dan is deze taal nier regulier.
 
 Algemeen voorbeeld:
 \begin{proof}
@@ -39,7 +34,6 @@ Stel dat er voor $L= \{a^nb^n | n \in \mathbb{N}\}$ een pomplengte $d$ bestaat. 
 \begin{enumerate}
 \item y bevat alleen a's: dan bevat xyyz meer a's dan b's en zit deze string dus niet in $L$
 \item y is van de vorm $a^ib^j$ met $i \neq 0, j \neq 0$: dan bevat xyyz niet alle a's voor de b's, en zit de string dus niet in L
-\item y bevat alleen b's: dan bevat xz meer a's dan b's en zit de string dus niet in L
-L kan dus niet regulier zijn.
+\item y bevat alleen b's: dan bevat xz meer a's dan b's en zit de string dus niet in L. L kan dus niet regulier zijn.
 \end{enumerate}
 \end{proof}

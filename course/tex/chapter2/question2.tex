@@ -4,7 +4,7 @@ Beschrijf in detail de transformatie van een niet-deterministische eindige toest
 
 \subsubsection*{(a) NFA vs DFA}
 
-Een \emph{NFA (niet-deterministische eindige automaat)} laat $\epsilon$-overgangen en meerdere bogen met hetzelfde label vanuit dezelfde knoop toe. Bij een NFA zijn er dus steeds meerdere mogelijkheden voor de volgende stap.  \\
+Een \emph{NFA (niet-deterministische eindige automaat)} laat $\epsilon$-overgangen en meerdere bogen met hetzelfde label vanuit dezelfde knoop toe. Bij een NFA kunnen er meerdere mogelijkheden zijn voor de volgende stap.  \\
 Een \emph{DFA (deterministische eindige automaat)} kan geen $\epsilon$-overgangen hebben en een symbool van het alfabet $\Sigma$ mag hoogstens op \'e\'en  uitgaande boog per toestand staan. De volgende stap van het proces ligt dus vast en er is maar \'e\'en mogelijkheid.
 
 \subsubsection*{(b) Algoritme}
@@ -14,13 +14,13 @@ Een \emph{DFA (deterministische eindige automaat)} kan geen $\epsilon$-overgange
 \textbf{Constructie:} Vermits de NFA $\epsilon$-bogen heeft, zullen we enkele van de toestanden van de NFA moeten samennemen. We kunnen dus al stellen dat elke toestand in de DFA een verzameling van toestanden van de NFA zal zijn:
 $$ Q_d =  \mathcal{P}(Q_n)$$
 Verder weten we ook dat de eindtoestand van de DFA altijd een eindtoestand van de NFA bevat:
-$$ F_d = \{S | S \in Q_d, S \cap F_n \neq 0 \}  $$
+$$ F_d = \{S | S \in Q_d, S \cap F_n \neq \emptyset \}  $$
 Nu rest er ons alleen nog de transitiefunctie $\delta_d$ om uit te werken:
 \begin{itemize}
 \item We weten al dat $\delta_d : (\mathcal{P} (Q_n) \times \Sigma) \rightarrow \mathcal{P}(Q_n)$.
 \item We beginnen met een nieuwe afbeelding in te voeren: $eb: Q_n \rightarrow \mathcal{P}(Q_n)$. Deze functie staat voor \emph{epsilon bereikbaar}. $eb(q)$ is dus de verzameling van toestanden in de NFA die met nul, \'e\'en of meer $\epsilon$-bogen bereikbaar zijn vanuit q.
 \item We gaan nu de definitie van eb liften naar $\mathcal{P}(Q_n)$. Voor een $\mathcal{Q} \in \mathcal{P}(Q_n)$ geldt dat: $eb(\mathcal{Q}) = \cup_{q \in \mathcal{Q}} eb(q)$.
-\item $\delta_n$ liften we op dezelfde manier.
+\item We zullen $\delta_n$ liften op dezelfde manier naar $\mathcal{P}(Q_n)$. Voor $\mathcal{Q} \in \mathcal{P}(Q_n)$ geldt dat: $\delta_n(Q,a) = \cup_{q \in Q}\delta_n(q,a)$ met $a \in \Sigma$. 
 \end{itemize}
 We defini\"eren $\delta_d$ dan als volgt:
 \begin{itemize}
@@ -31,11 +31,11 @@ $$ q_{sd} = eb(q_{sn}) $$
 \end{itemize}
 
 \subsubsection*{(c) Equivalentie}
-Twee automaten zijn equivalent wanneer ze dezelfde taal bepalen. Het algoritme dat we zonet hebben beschreven, is in staat om alle $\epsilon$-bogen weg te werken. Deze veranderen niets aan de taal die bepaalt wordt door de automaat.\footnote{Dit moet nog specifieker beantwoord worden.}
+Twee automaten zijn equivalent als ze dezelfde taal bepalen. Het algoritme dat we zonet hebben beschreven, is in staat om alle $\epsilon$-bogen weg te werken. Deze veranderen niets aan de taal die bepaalt wordt door de automaat. De gegeven NFA en de bekomen DFA zijn dus equivalent ($L_{DFA} = L_{NFA}$).
 
 \subsubsection*{(d) Deterministische transformatie}
-De transformatie van een NFA naar een DFA is steeds determinisitisch vermits er een eindig aantal toestanden zijn in een NFA. Dit zorgt er voor dat het algoritme steeds eindigt.
+Aangezien deze werkwijze alle mogelijke toestanden genereert, alsook alle mogelijk bogen, is er maar \'e\'en mogelijke uitkomst. Het is mogelijk om de toestanden en bogen van de DFA op een andere volgorde te construeren, maar dit zal steeds leiden tot dezelfde DFA.
 
 \subsubsection*{(e) DFA met minder toestanden dan een NFA}
 
-Het is mogelijk om een equivalente DFA te construeren uit een NFA die minder toestanden bevat. Dit is bijvoorbeeld het geval wanneer er meerdere toestanden zijn, die enkel met $\epsilon$-bogen verbonden zijn.
+Het is mogelijk om een equivalente DFA te construeren uit een NFA die minder toestanden bevat. Dit is bijvoorbeeld het geval wanneer er meerdere toestanden zijn die enkel met $\epsilon$-bogen verbonden zijn. De werkwijze als boven beschreven zal echter altijd meer toestanden hebben dan de NFA aangezien $Q_d = \mathcal{P}(Q_n)$. Dit wil niet zeggen dat er naar elk van deze toestanden een boog is. Deze kan bijna altijd nog geminimaliseerd worden.

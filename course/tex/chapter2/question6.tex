@@ -1,7 +1,37 @@
 \begin{question}
-Reconstrueer de details van het verhaal van Myhill-Nerode: elke DFA bepaalt een Myhill-Neroderelatie; elke Myhill-Neroderelatie bepaalt een DFA; twee isomorfe DFA's bepalen dezelfde Myhill-Nerode-relatie; het supremum van twee Myhill-Neroderelaties is een Myhill-Neroderelatie.
-Argumenteer ook het verband tussen de minimale DFA voor een reguliere taal L en de grofste MN(L)-relatie.
-Kan je ook een Myhill-Neroderelatie construeren voor een NFA? Wat krijg je dan met minimalisatie?
+  Reconstrueer de details van het verhaal van Myhill-Nerode: elke DFA bepaalt een Myhill-Neroderelatie; elke Myhill-Neroderelatie bepaalt een DFA; twee isomorfe DFA's bepalen dezelfde Myhill-Nerode-relatie; het supremum van twee Myhill-Neroderelaties is een Myhill-Neroderelatie.
+  Argumenteer ook het verband tussen de minimale DFA voor een reguliere taal L en de grofste MN(L)-relatie.
+  Kan je ook een Myhill-Neroderelatie construeren voor een NFA? Wat krijg je dan met minimalisatie?
 \end{question}
 
-\textit{Nog niet gezien.}
+Deze vraag is zeer groot. De eerste twee puntjes \emph{Elke DFA bepaalt een Myhill-Neroderelatie} en \emph{Elke Myhill-Neroderelatie bepaalt een DFA} kun je uitleggen met het antwoord op de vorige vraag.
+
+\subsubsection*{Twee isomorfe DFA's}
+
+\begin{proof}
+  Stel dat we twee isomorfe DFA's hebben die de taal L bepalen ($DFA_1$ en $DFA_2$). Dit wil zeggen dan er een \'e\'en op \'e\'en relatie is tussen hun toestanden (volgt uit de definitie van isomorfisme). Stel dat $x$ in $DFA_1$ eindigt in $q_{1,x}$ met $q_{1,x} = \delta_1(q_{1,s},x) = q_1‡$ indien $q_{1,s}$ de starttoestand is van $DFA_1$. Uit de definitie van isomorfisme volgt dat $\delta_2(q_{2,s},x) = q_{2,x} = q_2$ met $q_{2,s}$ de starttoestand van $DFA_2$ en dat $q_2$ equivalent is met $q_1$. Beide relaties zijn dus equivalent.
+\end{proof}
+
+\subsubsection*{Supremum van twee MN(L) relaties}
+
+Gegeven een reguliere taal L en twee $MN(L)$-relaties $\sim_1$ en $\sim_2$. We kunnen van die twee relaties het supremum beschouwen in de tralie van equivalentierelaties of partities. Het supremum $\sim_{sup}$ is de fijnste relatie die groffer is dan beide relaties en die dus bevat, namelijk:
+
+\begin{theory}
+  $x \sim_{sup} y$ is de transitieve sluiting van $(x \sim_1 y)$ of $(x \sim_2 y)$.
+\end{theory}
+
+\begin{theory}
+  Het supremum van twee $MN(L)$-relaties is ook een $MN(L)$-relatie: als $\sim_1$ en $\sim_2$ $MN(L)$-relaties zijn, dan is het supremum $\sim_{sup}$ van $\sim_1$ en $\sim_2$ ook een $MN(L)$-relatie.
+\end{theory}
+
+\begin{proof}
+  Zie boek p. 40 voor de formele notaties. Het komt er op neer om het supremum voluit te schrijven en dan de drie hoofdeigenschappen van een Myhill-Neroderelatie aan te tonen (door te termen terug op te splitsen en samen te nemen).
+\end{proof}
+
+\subsubsection*{Minimale DFA}
+
+Minimale DFA wijst op het minimaal aantal toestanden. Aangezien $x \sim y$ indien ze in beide toestand eindigen, zijn er minder equivalentierelaties. Aangezien het universum verdeeld wordt in equivalentieklassen (\'e\'en klasse per equivalentierelatie) zullen de klassen dus ook zo groot mogelijk zijn. Dit is de definitie van \emph{grofste}.
+
+\subsubsection*{MN(L) voor een NFA}
+
+Aangezien we een DFA kunnen opstellen van een NFA kunnen we ook een $MN(L)$-relatie opstellen. Dit zijn er echter heel wat, aangezien we verschillende DFA's kunnen opstellen die equivalent zijn aan de gegeven NFA.

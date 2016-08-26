@@ -1,5 +1,18 @@
 \begin{question}
-Geef alle stappen (stellingen \& bewijzen) om aan te tonen dat alle minimale DFA's die dezelfde taal bepalen isomorf zijn.
+  Geef alle stappen (stellingen \& bewijzen) om aan te tonen dat alle minimale DFA's die dezelfde taal bepalen isomorf zijn.
 \end{question}
 
-\textit{Nog niet gezien.}
+De twee voorgaande vragen zijn belangrijk voor deze vraag. Dit antwoord baseert zich op voorgaande theori\"en. Ik zou ze niet allemaal geven, maar als hij doorvraagt moet je ze wel kennen.
+
+\begin{proof}
+
+  Neem twee minimale DFA's voor eent taal L. We zullen bewijzen dat ze isomorf zijn. Beiden hebben hetzelfde aantal toestanden $N$ - anders was \'e\'en van de twee niet minimaal. Neem nu het supremum van die twee DFA's: je krijgt een DFA met opnieuw $N$ toestanden, want meer kan niet, maar ook minder niet.
+
+  In termen van de $MN(L)$-relaties door de drie betrokken DFA's ge\"induceerd betekent dat dat die drie relaties identiek zijn. In termen van de drie DFA's betekent het dat ze alle drie isomorf zijn.
+
+  Pas nu weten we zeker dat de minimisatieprocedure eindigt met een uniek resultaat (op isomorfisme na).
+\end{proof}
+
+De karakterisatie van de $MN(L)$-relatie die hoort bij de minimale DFA is redelijk eenvoudig:
+$$x \sim_{min} y \iff \forall s \in \Sigma^*(xs \in L \iff ys \in L)$$
+In essentie zegt dit: als twee toestanden f-gelijk zijn, dan zijn ze identiek.

@@ -8,7 +8,7 @@
 \usepackage{amsthm}
 \usepackage{graphicx}
 \usepackage{xcolor}
-\usepackage{lipsum} 
+\usepackage{lipsum}
 \usepackage{float}
 \usepackage[framemethod=default]{mdframed}
 \usepackage{todonotes}
@@ -89,6 +89,27 @@ Ik heb vele studenten gehoord die vaak het nut niet inzien van dit vak, of dit t
 \section{Talen en Automaten}
 
 De introductie van dit hoofdstuk is op dit moment nog niet geschreven. Wanneer alle vraagstukken uit \emph{Talen en Automaten} klaar zijn, zal hier een overzicht komen van de leerstof die aan bod komt in dit hoofdstuk. Delen waar geen vragen over zijn gesteld maar wel gekend moeten zijn, zullen hier ook opgelijst worden. Zo kan dit hoofdstuk een volledig overzicht bieden van wat er over te kennen valt.
+
+\subsection*{Extra info over equivalentie-relaties en -klassen}
+
+	Aangezien velen problemen hadden met Myhill-Nerode relaties, is hier wat achtergrond informatie om dit geheel beter te begrijpen. Stel dat we in het bezit zijn van vijf ballen. Hun volgorde is vast aangezien ze op een rij op tafel liggen. We kunnen dus spreken over $bal_i$ met $i \in \{1,2,3,4,5\}$. Deze duidt dan op de bal op de $i^{de}$ plaats.
+
+	Laten we even zeggen aannemen dat de oneven ballen rood zijn, de even ballen blauw. We kunnen op dit moment de ballen verdelen in groepen, namelijk de rode ($\{1,3,5\}$) en de blauwe ($\{2,4\}$). We gebruiken hier nu al (zonder het misschien te beseffen) equivalentie-relaties en -klassen!
+
+	Laten we de equivalentierelatie $\sim_{kleur}$ defini\"eren, die nagaat of twee ballen dezelfde kleur hebben. Zo is bijvoorbeeld $bal_1 \sim_{kleur} bal_3$ waar, maar $bal_2 \sim_{kleur} bal_5$ niet!
+
+	Een equivalentieklasse is dan eigenlijk de klasse (of verzameling) met alle elementen die voldoen aan een bepaalde equivalentierelatie. Zo kunnen we de volgende equivalentieklasses berekenen (er bestaan er meerdere). We nemen even $i = bal_i$ voor een makkelijkere notatie.
+
+	$$1_{\sim_{kleur}} = \{y|1 \sim_{kleur} y\} = \{1,3,5\}$$
+	$$2_{\sim_{kleur}} = \{y|2 \sim_{kleur} y\} = \{2,4\}$$
+
+	Houdt dit goed in het achterhoofd wanneer we gaan werken met Myhill-Nerode relaties aangezien deze verder bouwen op deze concepten. In deze cursus zijn $x$ en $y$ strings en worden deze als equivalent beschouwd op basis van (bv. een DFA). Zo kunnen we de equivalentierelatie $\sim_{DFA}$ beschouwen die zegt dat
+
+	$$x \sim_{DFA} y \iff \delta^*(q_s,x) = \delta^*(q_s,y)$$
+
+	Een ander voorbeeld is $x \sim_L y$ indien $x \in L$ en $y \in L$.
+
+
 \newpage
 
 \input{./tex/chapter2/question1}
@@ -101,7 +122,6 @@ De introductie van dit hoofdstuk is op dit moment nog niet geschreven. Wanneer a
 \input{./tex/chapter2/question8}
 \input{./tex/chapter2/question9}
 \input{./tex/chapter2/question10}
-\input{./tex/chapter2/question11}
 
 \newpage
 
