@@ -1,6 +1,6 @@
-\begin{question}
+\begin{quest}[Vraag 4]
 Geef een precieze formulering van het pompend lemma voor reguliere talen en een bewijs ervan. Geef voorbeelden waarbij je laat zien hoe je dat lemma gebruikt om te bewijzen dat een gegeven taal regulier is en om te bewijzen dat een gegeven taal niet regulier is.
-\end{question}
+\end{quest}
 
 We beginnen met dit alles intu\"itief te bekijken:\\
 Stel je hebt een reguliere taal met oneindig veel strings. Er bestaat een \emph{DFA} voor \emph{L} met $N = \#Q$ toestanden. Neem nu een string in \emph{L} die langer is dan \emph{N} en volg het pad van starttoestand naar eindtoestand. Vermits er maar \emph{N} toestanden zijn en je string meer dan \emph{N} karakters lang is en je bij elke overgang juist \'e\'en symbool achterlaat, moet je op je weg naar de eindtoestand minstens \'e\'en toestand $S$ twee of meer keer tegenkomen. Je hebt dus ergens een kring gemaakt. In deze string werd een substring van de oorspronkelijke string gebruikt.\\

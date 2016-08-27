@@ -12,6 +12,7 @@
 \usepackage{float}
 \usepackage[framemethod=default]{mdframed}
 \usepackage{todonotes}
+\usepackage{xparse}
 
 % Question command
 \newtheorem{qtext}{Vraag}
@@ -21,6 +22,14 @@
 % Set text counters
 \setcounter{qtext}{0}
 \setcounter{section}{0}
+
+\NewDocumentEnvironment{quest}{o}
+ {\IfNoValueTF{#1}
+   {\question\addcontentsline{toc}{subsection}{\protect\numberline{\thesubsection}Vraag}}
+   {\question\addcontentsline{toc}{subsection}{\protect\numberline{\thesubsection}Vraag: #1}}%
+   \ignorespaces}
+ {\stepcounter{subsection}\endquestion}
+
 
 % Define layout QuestionBox
 \newmdenv[skipabove=7pt,
@@ -69,7 +78,7 @@ innerbottommargin=5pt]{tbox}
 \author{\emph{Jensen Bernard}}
 \date{2016}
 
-\begin{document}
+\begin{document}\sloppy
 
 \pagenumbering{gobble}
 \clearpage
@@ -96,6 +105,12 @@ Ik heb vele studenten gehoord die vaak het nut niet inzien van dit vak, of dit t
 \\
 
 \hfill \emph{Jensen Bernard}
+\newpage
+\tableofcontents
+\newpage
+\begin{center}
+	\emph{This page is intentionally left blank.}
+\end{center}
 
 % CHAPTER 1: TALEN EN BEREKENBAARHEID
 \newpage
