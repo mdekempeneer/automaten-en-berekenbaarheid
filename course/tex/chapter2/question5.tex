@@ -40,7 +40,7 @@ We kunnen ook het omgekeerde doen en dus, vertrekkende uit $MN(L)$ een DFA contr
 \end{theorem}
 
 \begin{proof}
-  Dat $\delta$ goed gedefinieerd is, kan je bewijzen door gebruik te maken van de rechtse confruentie van $\sim$. Verder zijn alle andere ingredi\"enten van de DFA duidelijk, in het bijzonder ook dat $Q$ (en $F$) slechts een eindig aantal toestanden bevat. We moeten enkel nog bewijzen dat $L_{DFA} = L}$. Stel dat $x$ geaccepteerd wordt door de DFa.
+  Dat $\delta$ goed gedefinieerd is, kan je bewijzen door gebruik te maken van de rechtse confruentie van $\sim$. Verder zijn alle andere ingredi\"enten van de DFA duidelijk, in het bijzonder ook dat $Q$ (en $F$) slechts een eindig aantal toestanden bevat. We moeten enkel nog bewijzen dat $L_{DFA} = L$. Stel dat $x$ geaccepteerd wordt door de DFa.
   $$DFA accepteert x \iff x \in L_{DFA} \iff \delta^{q_s, x} \in F$$
   Uit de definitie van de DFA kunnen we zeggen dat $q_s = \epsilon_{\sim}$. Dus $\delta^*{\epsilon_{\sim} \in F}$. De toestand waaring string $x$ komt kunnen we schrijven als $x_{\sim}$ (zie punt 1). We kunnen dus het volgende besluiten.
   $$\delta^*{\epsilon_{\sim}} \in F \iff x_{\sim} \in F$$
