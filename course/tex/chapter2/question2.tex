@@ -24,7 +24,7 @@ Nu rest er ons alleen nog de transitiefunctie $\delta_d$ om uit te werken:
 \end{itemize}
 We defini\"eren $\delta_d$ dan als volgt:
 \begin{itemize}
-\item Vanuit een toestand $\mathcal{Q}$ met $\mathcal{Q} \in Q_d = \{Q_{(d,1)}, Q_{(d,2)}, \dots, Q_{(d,k)}\}$  in de DFA ga je naar de volgende toestand in de DFA door voor elke NFA toestand in $\mathcal{Q}$ eerst de overgangsfunctie van de NFA te volgen, en daarna de $\epsilon$-bogen te volgen. Van al deze resulterende toestandsverzamelingen neem je dan de unie:
+\item Vanuit een toestand $\mathcal{Q}$ met $\mathcal{Q} \in Q_d = \{Q_{(d,1)}, Q_{(d,2)}, \dots, Q_{(d,k)}\}$  in de DFA ga je naar de volgende toestand in de DFA door voor elke `NFA-toestand' in die $\mathcal{Q}$ (aangezien $\mathcal{Q} \in Q_d = \mathcal{P}(Q_n)$) eerst de overgangsfunctie van de NFA te volgen, en daarna de $\epsilon$-bogen te volgen. Van al deze resulterende toestandsverzamelingen neem je dan de unie:
 $$ \delta_d(\mathcal{Q},a) = eb(\delta_n(\mathcal{Q},a)) \text{ voor elke } \mathcal{Q} \in Q_d $$
 \item Tenslotte defini\"eren we nog:
 $$ q_{sd} = eb(q_{sn}) $$
