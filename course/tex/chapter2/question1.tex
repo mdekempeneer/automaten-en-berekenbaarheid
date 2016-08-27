@@ -18,15 +18,15 @@ Daarna kunnen we alle mogelijke koppels van toestanden overlopen en nagaan of er
 
 Het principe van het algoritme is simpel. We beginnen met het verwijderen van alle niet bereikbare toestanden. Hierna gaan we alle \textit{f-equivalente} toestanden samennemen. In wat nu volgt wordt het algoritme verder uitgelegd, er van uitgaande dat alle niet-bereikbare toestanden reeds weggelaten zijn. Maak hier zeker oefeningen op! Het is praktisch onmogelijk dit goed uit te leggen als je het niet volledig snapt.
 
-\paragraph{Init} Stel een graaf $V$ op, zonder bogen, met alle nodes gelijk aan de toestanden van de DFA. Verbind nu elke node, verschillend van de accepterende eindtoestanden, met alle mogelijk eindtoestanden en label deze met $\epsilon$. Deze bogen duiden aan dat de verbonden nodes \textit{f-verschillend} zijn (zoals we eerder hadden vermeld).
+\paragraph{Init} Stel een graaf $V$ op, zonder bogen, waarvan de nodes gelijk aan de toestanden van de DFA. Verbind nu elke node, verschillend van de accepterende eindtoestanden, met alle mogelijk eindtoestanden en label deze met $\epsilon$. Deze bogen duiden aan dat de verbonden nodes \textit{f-verschillend} zijn (zoals we eerder hadden vermeld).
 
 \paragraph{Repeat} Ga nu alle koppels van toestanden af die niet verbonden zijn in onze net opgestelde graaf $V$. Check nu, in de originele DFA, voor elk karakter $\alpha$ in het alfabet, naar welke toestanden de toestanden uit het koppel wijzen. Zijn deze twee toestanden verbonden met elkaar in de graaf $V$? Dan hebben we een conflict en voegen we een boog toe tussen de twee originele toestanden in $V$ met label $\alpha$. Ga door tot we geen bogen of labels meer moeten toevoegen.
 
-\paragraph{Final} Stel de complementsgraaf op van de gevonden graaf $V$. De gevonden graaf is toont nu aan welke nodes samen genomen kunnen worden. Wanneer bv. node $4$ en $7$ samenhoren, maken we een node $4,7$. Voeg nu gewoon alle bogen van de originele DFA toe en je hebt de minimale DFA. Well Done.
+\paragraph{Final} Stel de complementsgraaf op van de gevonden graaf $V$. De complementsgraaf is toont nu aan welke nodes (dus toestanden) samen genomen kunnen worden. Wanneer bv. node $4$ en $7$ samenhoren, maken we een node $(4,7)$. Voeg nu gewoon alle bogen van de originele DFA toe en je hebt de minimale DFA. Well done.
 
 \subsubsection*{Kleinere DFA dan de minimale DFA}
 
-Aangezien we weten dat de minimale DFA, bekomen van het algoritme dat we zonet hebben beschreven, geen \textit{f-equivalente} toestanden heeft, kunnen we geen kleinere DFA vinden.
+Aangezien we weten dat de minimale DFA, bekomen uit het algoritme dat we zonet hebben beschreven, geen \textit{f-equivalente} toestanden heeft, kunnen we geen kleinere DFA vinden.
 
 \begin{theorem}
 	Als $DFA_1 = (Q_1,\Sigma,\delta_1,q_s,F_1)$ een machine is zonder onbereikbare toestanden en waarin elke twee toestanden f-verschillend zijn, dan bestaat er geen machine met strikt minder toestanden die dezelfde taal bepaalt.
@@ -37,7 +37,7 @@ Aangezien we weten dat de minimale DFA, bekomen van het algoritme dat we zonet h
 	
 	Vermits in $DFA_1$ elke toestand bereikbaar is, bestaan er strings $s_i,i=1..n$ zodanig dat $\delta_1^*(q_s,s_i)=q_i$. Vermits $DFA_2$ minder toestanden heeft, moet voor een $i \neq j$ $\delta^*_2(p_s,s_i)=\delta^*_2(p_s,s_j)$. Vermits $q_i$ en $q_j$ \textit{f-verschillend} zijn, bestaat een string $v$ zodanig dat $\delta_1^*(q_i, v)\in F_1$ en $\delta^*_1(q_j,v) \notin F_1$ of omgekeerd.\\
 	
-	Dus ook $\delta_1^*(q_i, s_i v)\in F_1 \and \delta^*_1(q_j,s_i v) \notin F_1$ of omgekeerd. Dit betekent dat $DFA_1$ van de strings $s_i v$ en $s_j v$ er juist \'e\'en accepteert.\\
+	Dus ook $\delta_1^*(q_i, s_i v)\in F_1 \and \delta^*_1(q_j,s_i v) \notin F_1$ of omgekeerd. Dit betekent dat van de strings $s_i v$ en $s_j v$ de $DFA_1$ er juist \'e\'en accepteert.\\
 	
 	Maar: $\delta_2^*(p_s,s_i v) = \delta_2^*(\delta_2^*(p_s,s_i),v) = \delta_2^*(\delta_2^*(p_s,s_j),v) = \delta_2^*(p_s,s_j v)$ hetgeen betekent dat $DFA_2$ ofwel beide strings $s_iv$ en $s_jv$ accepteert, of beide verwerpt.
 
