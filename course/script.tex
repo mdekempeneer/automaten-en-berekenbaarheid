@@ -18,9 +18,11 @@
 \let\olddefinition\qtext
 \renewcommand{\qtext}{\olddefinition\normalfont}
 
+% Set text counters
 \setcounter{qtext}{0}
-\setcounter{section}{1}
+\setcounter{section}{0}
 
+% Define layout QuestionBox
 \newmdenv[skipabove=7pt,
 skipbelow=7pt,
 rightline=false,
@@ -36,10 +38,7 @@ leftmargin=0cm,
 rightmargin=0cm,
 linewidth=2pt,
 innerbottommargin=5pt]{qbox}
-
 \newenvironment{question}{\newpage\begin{qbox}\begin{qtext}}{\end{qtext}\end{qbox}}
-
-
 \newtheorem{ttext}{Definitie}
 
 % Theorem box
@@ -61,30 +60,47 @@ innerbottommargin=5pt]{tbox}
 
 \newenvironment{theorem}{\begin{tbox}\begin{ttext}}{\end{ttext}\end{tbox}}
 
-
 \newenvironment{pushcenter}{\vspace{1mm}\begin{center}}{\vspace{1mm}\end{center}}
 
 \setlength\parindent{0pt}
 
+% Document info
 \title{AUTOMATA \\ \& \\ COMPUTABILITY}
 \author{\emph{Jensen Bernard}}
+\date{2016}
 
 \begin{document}
 
+\pagenumbering{gobble}
+\clearpage
+\thispagestyle{empty}
 \maketitle
+\newpage
 
+\begin{center}
+	\emph{This page is intentionally left blank.}
+\end{center}
+
+% Preface
+\newpage
 \section*{Voorwoord}
 
-Dit document bevat mogelijke examenvragen voor het vak \emph{Automaten en Berekenbaarheid}\footnote{Course G0P84a and G0P85a}, gedoceerd aan de Katholieke Universiteit Leuven. In geen enkel geval wil dit document een vervanging zijn voor de cursus. De cursustekst, \emph{Automaten en berekenbaarheid}, geschreven door \emph{Bart Demoen}, is zeer goed en het is zeker aangeraden deze grondig door te nemen voor u begint aan de volgende vraagstukken.
-Ik heb dit document opgesteld tijdens het studeren van het vak, om op deze manier een overzicht te hebben van mogelijke examenvragen die we kunnen verwachten in Januari 2016. Vele vragen uit verschillende jaren komen zeer sterk overeen, daarom kan het zeker geen kwaad om deze extra aandacht te geven.
+Dit document bevat mogelijke examenvragen voor het vak \emph{Automaten en Berekenbaarheid}\footnote{Course G0P84a and G0P85a.}, gedoceerd aan de Katholieke Universiteit Leuven. In geen enkel geval wil dit document een vervanging zijn voor de cursus. De cursustekst, \emph{Automaten en berekenbaarheid}, geschreven door \emph{Bart Demoen}, is zeer goed en het is zeker aangeraden deze grondig door te nemen voor u begint aan de volgende vraagstukken.
+Ik heb dit document opgesteld tijdens het studeren van het vak, om op deze manier een overzicht te hebben van mogelijke examenvragen die we kunnen verwachten in 2016. Vele vragen uit verschillende jaren komen zeer sterk overeen, daarom kan het zeker geen kwaad om deze extra aandacht te geven.
 \\
 
 Het is ook mogelijk dat er verwezen wordt naar delen uit de cursus. De meeste van deze verwijzingen zijn geschreven in December 2015. De meest recente versie was op dit moment de uitgave van 2013. Indien een nieuwere versie beschikbaar is, is het mogelijk dat de pagina's niet meer overeenstemmen. Aarzal niet om deze, zowel als mogelijke inhoudelijke fouten, aan te geven of aan te passen op Github.
 \\
 
-Ik heb vele studenten gehoord die vaak het nut niet inzien van dit vak, of dit totaal niet interessant vinden. Het is belangrijk eerst het voorwoord in de cursus eens te lezen, om een goed beeld te hebben van waar we nu eigenlijk mee bezig zijn. Indien u nog steeds van mening bent dat dit een enorm saai vak is, dan raad ik aan om ca. 2u te pauzeren om \emph{The Imitation Game}\footnote{Een film over Alan Turing, 2014} te kijken. Kom daarna terug en alles zal veel interessanter lijken dan voordien.
+Ik heb vele studenten gehoord die vaak het nut niet inzien van dit vak, of dit totaal niet interessant vinden. Het is belangrijk eerst het voorwoord in de cursus eens te lezen, om een goed beeld te hebben van waar we nu eigenlijk mee bezig zijn. Indien u nog steeds van mening bent dat dit een enorm saai vak is, dan raad ik aan om ca. 2u te pauzeren om \emph{The Imitation Game}\footnote{Een film over Alan Turing, 2014.} te kijken. Kom daarna terug en alles zal veel interessanter lijken dan voordien.
+\\
 
+\hfill \emph{Jensen Bernard}
+
+% CHAPTER 1: TALEN EN BEREKENBAARHEID
 \newpage
+\clearpage
+\pagenumbering{arabic}
 
 \section{Talen en Automaten}
 
