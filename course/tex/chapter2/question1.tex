@@ -18,7 +18,7 @@ Daarna kunnen we alle mogelijke koppels van toestanden overlopen en nagaan of er
 
 Het principe van het algoritme is simpel. We beginnen met het verwijderen van alle niet bereikbare toestanden. Hierna gaan we alle \textit{f-equivalente} toestanden samennemen. In wat nu volgt wordt het algoritme verder uitgelegd, er van uitgaande dat alle niet-bereikbare toestanden reeds weggelaten zijn. Maak hier zeker oefeningen op! Het is praktisch onmogelijk dit goed uit te leggen als je het niet volledig snapt.
 
-\paragraph{Init} Stel een graaf $V$ op, zonder bogen, met alle nodes gelijk aan de toestanden van de DFA. Verbind nu elke node, verschillend van de accepterende eindtoestanden, met alle mogelijk eindtoestanden en label deze met $\epsilon$. Deze bogen duiden aan dat de verbonden nodes \textit{f-verschillend} zijn (zoals we eerder hadden vermeld).
+\paragraph{Init} Stel een graaf $V$ op, zonder bogen, waarvan de nodes gelijk aan de toestanden van de DFA. Verbind nu elke node, verschillend van de accepterende eindtoestanden, met alle mogelijk eindtoestanden en label deze met $\epsilon$. Deze bogen duiden aan dat de verbonden nodes \textit{f-verschillend} zijn (zoals we eerder hadden vermeld).
 
 \paragraph{Repeat} Ga nu alle koppels van toestanden af die niet verbonden zijn in onze net opgestelde graaf $V$. Check nu, in de originele DFA, voor elk karakter $\alpha$ in het alfabet, naar welke toestanden de toestanden uit het koppel wijzen. Zijn deze twee toestanden verbonden met elkaar in de graaf $V$? Dan hebben we een conflict en voegen we een boog toe tussen de twee originele toestanden in $V$ met label $\alpha$. Ga door tot we geen bogen of labels meer moeten toevoegen.
 
