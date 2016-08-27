@@ -1,0 +1,34 @@
+\begin{question}
+  Geef de definitie van een \emph{PDA}. Leg de constructie uit van een \emph{PDA} voor een gegeven contextvrije taal. Beargumenteer de correctheid.
+  Is die \emph{PDA} deterministisch?\\
+  Wat is deterministisch precies?\\
+  Wanneer wordt een string door een \emph{PDA} aanvaardt? En door een \emph{CFG}?\\
+  Leg uit ambiguiteit van de \emph{CFG}.\\
+  Leidt ambiguiteit altijd tot een niet-deterministische \emph{PDA}? En vice-versa?
+\end{question}
+
+\subsubsection*{Definitie}
+
+\begin{theorem}
+  Een push-down automaat is een 6-tal $(Q,\Sigma, \Gamma, \delta, q_s, F)$ waarbij
+  \begin{itemize}
+    \item Q is een eindige verzameling toestanden
+    \item $\sigma$ is een eindig inputalfabet
+    \item $\Gamma$ is een eindig stapelalfabet
+    \item $\delta$ is een overgangsfunctie met signatuur $Q \times \Sigma_\epsilon \times \Gamma_\epsilon \rightarrow \mathcal{P}(Q \times \Gamma_\epsilon)$
+    \item $q_s$ is de starttoestand
+    \item $F \subseteq Q$ is een verzameling eindtoestanden
+  \end{itemize}
+\end{theorem}
+
+\subsubsection*{Constructie}
+
+Zie antwoord op een van de voorgaande vragen.
+
+\subsubsection*{Determinisme}
+
+Standaard is een \emph{PDA} niet deterministisch aangezien het mogelijk is dat er meerdere mogelijkheden zijn. Zo kan er ook een $\epsilon, \epsilon \rightarrow \epsilon$ boog bestaan. Een string wordt aanvaard indien deze eindigt in een aanvaardbare eindtoestand.
+
+\subsubsection*{Ambiguiteit}
+
+Ambiguiteit wil zeggen dan de \emph{CFG} ambigu is, m.a.w. het is mogelijk een keuze te maken om na te gaan of een string wordt geaccepteerd of niet. Aangezien deze keuze ook moet reflecteren in de corresponderende \emph{PDA}, is de \emph{PDA} dus ook niet deterministisch.

@@ -4,7 +4,7 @@ Geef een precieze formulering van het pompend lemma voor context-vrije talen en 
 
 Het pompend lemma voor contextvrije talen gaat als volgt:
 \begin{theorem}[Pompend lemma voor contextvrije talen]
-Voor een contextvrije taal L bestaat een getal P (de pomplengte) zodanig dat elke string s van L met lengte minstens p kan opgedeeld worden in 5 stukken u,v,x,y en z uit $\Sigma^*$ zodanig dat s = uvxyz en 
+Voor een contextvrije taal \emph{L} bestaat een getal $P$ (de pomplengte) zodanig dat elke string $s$ van \emph{L} met lengte minstens $p$ kan opgedeeld worden in vijf stukken $u$,$v$,$x$,$y$ en $z$ uit $\Sigma^*$ zodanig dat $s = uvxyz$ en
 \begin{enumerate}
 \item $\forall i \geq 0 : uv^ixy^iz \in L$
 \item $|vy| > 0$
@@ -14,9 +14,9 @@ Voor een contextvrije taal L bestaat een getal P (de pomplengte) zodanig dat elk
 
 Dit is te bewijzen als volgt:
 \begin{proof}
-Eerst en vooral gaan we onze CFG in Chomsky normaalvorm zetten. Dit is een meer restrictieve vorm:
+Eerst en vooral gaan we onze \emph{CFG} in Chomsky normaalvorm zetten. Dit is een meer restrictieve vorm:
 \begin{theorem}[Chomsky Normaal Vorm]
-Een CFG heeft de Chomsky Normaal Vorm als elke regel 1 van de volgende vormen heeft:
+Een \emph{CFG} heeft de Chomsky Normaal Vorm als elke regel \'e\'en van de volgende vormen heeft:
 \begin{enumerate}
 \item $A \rightarrow BC$
 \item $A \rightarrow \alpha$
@@ -24,9 +24,9 @@ Een CFG heeft de Chomsky Normaal Vorm als elke regel 1 van de volgende vormen he
 \end{enumerate}
 Hierin is $\alpha$ een eindsymbool, $A$ een niet-eindsymbool en $B,C$ niet-eindsymbolen verschillend van het startsymbool.
 \end{theorem}
-Nu dat de CFG is omgezet heeft elke regel ofwel 2 ofwel 0 niet-terminalen aan de rechterkant. Stel nu $n$ gelijk aan het aantal niet-eindsymbolen in de CFG.\\[0.5cm]
+Nu dat de \emph{CFG} is omgezet heeft elke regel ofwel twee ofwel geen niet-terminalen aan de rechterkant. Stel nu $n$ gelijk aan het aantal niet-eindsymbolen in de CFG.\\[0.5cm]
 
-Voor een bepaalde string s uit L bestaat er steeds een parse tree. Als je uit deze parse tree de onderste takken wegsnoeit hou je een volledige binaire boom over want de CFG staat in Chomsky Normaal Vorm. De hoogte van de boom is minstens gelijk aan $log_2(|s|)$. Het langste enkelvoudige pad van de wortel bevat dus minstens $log_2(|s|)+1$ knopen en als we $s$ lang genoeg kiezen, dan is $log_2(|s|)+1$ groter dan n en bijgevolg moet er op dat langste pad minstens 1 niet-eindsymbool (neem $X$) herhaald worden.\\[0.5cm]
+Voor een bepaalde string $s$ uit \emph{L} bestaat er steeds een parse tree. Als je uit deze parse tree de onderste takken wegsnoeit hou je een volledige binaire boom over want de \emph{CFG} staat in Chomsky Normaal Vorm. De hoogte van de boom is minstens gelijk aan $log_2(|s|)$. Het langste enkelvoudige pad van de wortel bevat dus minstens $log_2(|s|)+1$ knopen en als we $s$ lang genoeg kiezen, dan is $log_2(|s|)+1$ groter dan $n$ en bijgevolg moet er op dat langste pad minstens \'e\'en niet-eindsymbool (neem $X$) herhaald worden.\\[0.5cm]
 
 Neem de laagste $X$ ($X_2$) en zijn dichtste herhaling ($X_1$) op dat pad. $X$ is zeker verschillen van het startsymbool. We kunnen nu een afleiding construeren van de vorm:
 $$ S \Rightarrow^* u X_2 z \Rightarrow^* u v X_1 y z \Rightarrow^* uvxyz  $$
@@ -38,7 +38,6 @@ en
 $$ S \Rightarrow^* u X z \Rightarrow^* u v X y z \Rightarrow^* u v v x y y z  $$
 dat ook. \\[0.5cm]
 
-We hebben nu de eerste 2 puntjes van de de stelling al bewezen indien er strings gekozen worden die langer zijn dan $2^{(n-1)}$. Dit is onze pomplengte $p$. $vxy$ wordt afgeleid vanuit $X$ met een parse tree die kleiner is dan $n$. De parse tree heeft dus hoogstens $2^{n-1}$ bladeren en die corresponderen juist met $vxy$. Hiermee is het derde puntje ook bewezen.
+We hebben nu de eerste twee puntjes van de de stelling al bewezen indien er strings gekozen worden die langer zijn dan $2^{(n-1)}$. Dit is onze pomplengte $p$. $vxy$ wordt afgeleid vanuit $X$ met een parse tree die kleiner is dan $n$. De parse tree heeft dus hoogstens $2^{n-1}$ bladeren en die corresponderen juist met $vxy$. Hiermee is het derde puntje ook bewezen.
 
 \end{proof}
-
