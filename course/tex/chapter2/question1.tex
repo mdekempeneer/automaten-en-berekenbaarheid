@@ -12,11 +12,11 @@ Voor een gegeven reguliere taal $L$ bestaan er meestal veel DFA's die de taal be
 
 Het vinden van \textit{f-equivalente} toestanden in een DFA is relatief simpel. Om te beginnen weten we dat elke toestand, verschillend van de aanvaardbare eindtoestanden, \textit{f-verschillend} is van de aanvaardbare eindtoestanden. Indien dit niet zo zou zijn, zouden ook de toestanden die geen eindtoestanden zijn, eindtoestanden zijn. Dit is in contradictie met wat we net aannamen.
 
-Daarna kunnen we alle mogelijke koppels van toestanden overlopen en nagaan indien er een string $s$ bestaat, die beide toestanden naar twee f-verschillende toestanden brengen. In dit geval zijn deze toestanden ook f-verschillend. Indien zo een string $s$ niet bestaat, zijn ze f-gelijk.
+Daarna kunnen we alle mogelijke koppels van toestanden overlopen en nagaan of er een string $s$ bestaat, die beide toestanden naar twee f-verschillende toestanden brengen. In dit geval zijn deze toestanden ook f-verschillend. Indien zo een string $s$ niet bestaat, zijn ze f-gelijk.
 
 \subsubsection*{Algoritme}
 
-Het principe van het algoritme is simpel. We beginnen met het verwijderen van alle niet bereikbare toestanden. Hierna gaan we alle \textit{f-equivalente} toestanden samennemen. De volgende stappen leggen het algoritme uit dat er van uit gaat dat alle niet-bereikbare toestanden al weggelaten zijn. Maak hier zeker oefeningen op! Het is praktisch onmogelijk dit goed uit te leggen als je het niet volledig snapt.
+Het principe van het algoritme is simpel. We beginnen met het verwijderen van alle niet bereikbare toestanden. Hierna gaan we alle \textit{f-equivalente} toestanden samennemen. In wat nu volgt wordt het algoritme verder uitgelegd, er van uitgaande dat alle niet-bereikbare toestanden reeds weggelaten zijn. Maak hier zeker oefeningen op! Het is praktisch onmogelijk dit goed uit te leggen als je het niet volledig snapt.
 
 \paragraph{Init} Stel een graaf $V$ op, zonder bogen, met alle nodes gelijk aan de toestanden van de DFA. Verbind nu elke node, verschillend van de accepterende eindtoestanden, met alle mogelijk eindtoestanden en label deze met $\epsilon$. Deze bogen duiden aan dat de verbonden nodes \textit{f-verschillend} zijn (zoals we eerder hadden vermeld).
 
