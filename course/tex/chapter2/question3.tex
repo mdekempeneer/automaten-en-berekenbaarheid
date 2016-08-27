@@ -1,11 +1,11 @@
 \begin{question}
 Bewijs dat een eindige toestandsautomaat altijd een taal herkent die door een reguliere expressie wordt beschreven. Doe dat door een eindige toestandsautomaat te transformeren naar een gegeneraliseerde niet-deterministische eindige toestandsautomaat met slechts twee toestanden.\\
-Kan voor een PDA ongeveer hetzelfde gedaan worden door een gegeneraliseerde PDA op te stellen?\\
+Kan voor een \emph{PDA} ongeveer hetzelfde gedaan worden door een gegeneraliseerde \emph{PDA} op te stellen?\\
 \end{question}
 
 Voor we hier aan beginnen defini\"eren we de \emph{GNFA} als volgt:
 \begin{theorem}[GNFA]
-Een GNFA (gegeneraliseerde niet-deterministische eindige automaat) is een eindige toestandsmachine met de volgende wijzigingen en beperkingen:
+Een \emph{GNFA} (gegeneraliseerde niet-deterministische eindige automaat) is een eindige toestandsmachine met de volgende wijzigingen en beperkingen:
 \begin{enumerate}
 \item Er is slechts 1 eindtoestand $\neq$ starttoestand
 \item Er is juist 1 boog van de starttoestand naar elke andere toestand en er komen geen pijlen aan (buiten de startpijl)
@@ -17,51 +17,51 @@ Een GNFA (gegeneraliseerde niet-deterministische eindige automaat) is een eindig
 \end{theorem}
 In wat volgt bewijzen we dat een eindige toestandsautomaat altijd een taal herkent die door een reguliere expressie wordt beschreven. We volgen volgend stappenplan:
 $$ \text{NFA} \rightarrow \text{GNFA} \rightarrow \text{GNFA met 2 toestanden} \rightarrow \text{reguliere expressie} $$
-In de opgave spreken ze van een ``eindige toestandsautomaat'', we gaan er hier echter vanuit dat we starten vanaf een NFA. Dit mag vermits elke DFA omgezet kan worden naar een NFA.
+In de opgave spreken ze van een ``eindige toestandsautomaat'', we gaan er hier echter vanuit dat we starten vanaf een \emph{NFA}. Dit mag vermits elke \emph{DFA} omgezet kan worden naar een \emph{NFA}.
 
 \begin{proof}
-\subsubsection*{(a) NFA $\rightarrow$ GNFA}
-We kunnen onze NFA omzetten naar een GNFA als volgt:
+\subsubsection*{NFA $\rightarrow$ GNFA}
+We kunnen onze \emph{NFA} omzetten naar een \emph{GNFA} als volgt:
 \begin{enumerate}
 \item Maak een nieuwe starttoestand en een nieuwe (unieke) eindtoestand
-\item Teken $\epsilon$-bogen van de nieuwe begintoestand naar de oude begintoestand en van elke oude eindtoestand naar de nieuwe eindtoestand.
-\item Teken ontbrekende bogen met een $\phi$.
+\item Teken $\epsilon$-bogen van de nieuwe begintoestand naar de oude begintoestand (van de \emph{NFA}) en van elke oude eindtoestand (van de \emph{NFA}) naar de nieuwe eindtoestand.
+\item Teken ontbrekende bogen met een $\phi$-label.
 \item Als er tussen twee toestanden twee of meer parallele gerichte bogen zijn, neem die dan samen met als label de unie van de labels van de parallelle bogen.
 \end{enumerate}
-Deze omzetting van NFA naar GNFA verandert de taal niet. We doen namelijk enkel correct manipulaties van de NFA.\\
-Nu we een GNFA geconstrueerd hebben moeten we deze reduceren naar een GNFA met 2 toestanden.
+Deze omzetting van \emph{NFA} naar \emph{GNFA} verandert de taal niet. We doen namelijk enkel correct manipulaties van de \emph{NFA}.\\
+Nu we een \emph{GNFA} geconstrueerd hebben moeten we deze reduceren naar een GNFA met 2 toestanden.
 
-\subsubsection*{(b) Reduceren van de GNFA}
-Dit doen we door herhaaldelijk een willekeurige toestand X verschillend van de start- of eindtoestand te kiezen en deze knoop de verwijderen als volgt:
+\subsubsection*{Reduceren van de GNFA}
+Dit doen we door herhaaldelijk een willekeurige toestand $X$ verschillend van de start- of eindtoestand te kiezen en deze knoop de verwijderen als volgt:
 \begin{enumerate}
-\item Kies toestanden A en B zodat er bogen zijn van: 
+\item Kies toestanden $A$ en $B$ zodat er bogen zijn van\footnote{De toestand $X$ moet zicht tussen de toestanden $A$ en $B$ bevinden.}:
 \begin{itemize}
-\item A naar B met label $E_4$
-\item A naar X met label $E_1$
-\item X naar zichzelf met label $E_2$
-\item X naar B met label $E_3$
+\item $A$ naar $B$ met label $E_4$
+\item $A$ naar $X$ met label $E_1$
+\item $X$ naar zichzelf met label $E_2$
+\item $X$ naar $B$ met label $E_3$
 \end{itemize}
-\item Vervang het label op de boog van A naar B door $E_4 | E_1 E_2^* E_3$.
-\item Doe dit voor alle koppels A en B
-\item Verwijder de knoop X met alle bogen die erin toekomen of vertrekken.
+\item Vervang het label op de boog van $A$ naar $B$ door $E_4 | E_1 E_2^* E_3$.
+\item Doe dit voor alle koppels $A$ en $B$
+\item Verwijder de knoop $X$ met alle bogen die erin toekomen of vertrekken.
 \end{enumerate}
-Indien er geen toestanden meer zijn, ga naar stap (c).
+Indien er geen toestanden meer zijn, ga dan naar de volgende stap. Op dit moment hebben we een \emph{GNFA} met twee toestanden.
 
-\subsubsection*{(c) Bepaal RE}
-De GNFA heeft nu exact 2 toestanden (een start- en eindtoestand) met daartussen 1 boog. Deze boog heeft nu een reguliere expressie als label. Dit is de reguliere expressie die dezelfde taal bepaald als de oorspronkelijke NFA.
+\subsubsection*{Bepaal de reguliere expressie}
+De \emph{GNFA} heeft nu exact twee toestanden (een start- en eindtoestand) met daartussen \'e\'en boog. Deze boog heeft nu een reguliere expressie als label. Dit is de reguliere expressie die dezelfde taal bepaald als de oorspronkelijke \emph{NFA}.
 \end{proof}
 
-\subsubsection*{(d) Extra}
-In wat volgt bewijzen we nog dat de reductie met 1 toestand de verzameling aanvaarde strings niet verandert. Hiervoor moeten we aantonen dat indien s aanvaard werd voor de reductie, deze ook na de reductie aanvaard wordt (1) en indien s niet aanvaard werd voor de reductie, deze na de reductie ook niet aanvaard wordt (2).\\
-\subsubsection*{(1)}
+\subsubsection*{Extra}
+In wat volgt bewijzen we nog dat de reductie met \'e\'en enkele toestand de verzameling aanvaarde strings niet verandert. Hiervoor moeten we aantonen dat indien $s$ aanvaard werd voor de reductie, deze ook na de reductie aanvaard wordt en indien $s$ niet aanvaard werd voor de reductie, deze na de reductie ook niet aanvaard wordt.\\
+\subsubsection*{String $s$ wordt nog steeds aanvaard}
 \begin{proof}
-Als s aanvaard werd door een pad zonder X, wordt s nog steeds aanvaard. Als het pad X bevat zijn er toestanden A en B zodat $AX^n B$ een opeenvolging van toestanden is. De reguliere expressie op bogen AX,XX en XB zijn $E_1$, $E_2$ en $E_3$ en bijgevolg kost van A naar B gaan langs X een stuk string van de vorm $E_1  (E_2)^* E_3$. Deze reguliere expressie staat ook in de boog AB van de nieuwe GNFA.
+Als $s$ aanvaard werd door een pad zonder $X$, wordt $s$ nog steeds aanvaard. Als het pad $X$ bevat zijn er toestanden $A$ en $B$ zodat $AX^nB$ een opeenvolging van toestanden is. De reguliere expressie op bogen $AX$, $XX$ en $XB$ zijn $E_1$, $E_2$ en $E_3$ en bijgevolg kost van $A$ naar $B$ gaan langs $X$ een stuk string van de vorm $E_1  (E_2)^* E_3$. Deze reguliere expressie staat ook in de boog $AB$ van de nieuwe \emph{GNFA}.
 \end{proof}
-\subsubsection*{(2)}
+\subsubsection*{String $s$ wordt nog steeds niet aanvaard}
 \begin{proof}
-Als s aanvaard wordt door de gereduceerde GNFA dan bevat het acceptatiepad uiteraard alleen toestanden verschillend van X. OP een boog AB staat de reguliere expressie $E_4 | E_1 (E_2)^* E_3$. Die gebruiken betekend een stukje string uitgeven dat voldoet aan $E_4$ of aan $E_1 (E_2)^* E_3$. Dus in de originele GNFA komt dit overeen met ofwel de boog AB volgen ofwel AX,XX (een aantal keer) en XB.\\
-Dus als de string aanvaard wordt door de gereduceerde GNFA wordt hij ook aanvaard door de originele GNFA.
+Als $s$ aanvaard wordt door de gereduceerde \emph{GNFA} dan bevat het acceptatiepad uiteraard alleen toestanden verschillend van $X$. Op een boog $AB$ staat de reguliere expressie $E_4 | E_1 (E_2)^* E_3$. Die gebruiken betekend een stukje string uitgeven dat voldoet aan $E_4$ of aan $E_1 (E_2)^* E_3$. Dus in de originele \emph{GNFA} komt dit overeen met ofwel de boog \emph{AB} volgen ofwel $AX$, $XX$ (een aantal keer) en $XB$.\\
+Dus als de string aanvaard wordt door de gereduceerde \emph{GNFA} wordt hij ook aanvaard door de originele \emph{GNFA}.
 \end{proof}
 
-\subsubsection*{(e) Kan dit ook met een PDA?}
-Dit is mogelijk aangezien we bij gewone FSM's labels samen nemen in een reguliere expressie. Een PDA kan dit ook doen, aangezien we meerdere karakters in \'e\'en enkele keer op de stapel kunnen schrijven (of verwijderen).
+\subsubsection*{Kan dit ook met een PDA?}
+Dit is mogelijk aangezien we bij gewone \emph{FSM's} labels samen nemen in een reguliere expressie. Een \emph{PDA} kan dit ook doen, aangezien we meerdere karakters in \'e\'en enkele keer op de stapel kunnen schrijven (of verwijderen).
