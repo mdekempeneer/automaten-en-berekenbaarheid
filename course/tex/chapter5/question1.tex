@@ -1,0 +1,20 @@
+\begin{question}
+  Vertel alles wat je weet i.v.m. de Chomsky-hi\"erarchie binnen de 5 minuten. \\
+  Zijn de talen van een TM beslisbaar en wat is de tijdscomplexiteit doorheen de Chomsky-hierarchie?
+\end{question}
+
+De Chomsky-hi\"erarchie is de opdeling van formele talen in klassen op basis van het type grammatica dat de taal kan genereren. Het is een hi\"erarchie omdat elke klasse erin ook de klasse met een hoger nummer (lager in de hierarchie) omvat. De indeling naar type zegt iets over de uitdrukkingskracht en de complexiteit van generatie en interpretatie. De opdeling ziet er uit als volgt:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|>{\columncolor[gray]{0.8}}l|l|l|l|}
+\hline
+\textbf{Type}      & \textbf{Taalklasse}       & \textbf{Automatenmodel}   & \textbf{Grammatica}       \\ \hline
+\textit{Type 3}    & Regulier         & Eindig           & Regulier         \\\noalign{\vskip-0.1pt}
+\textit{Type 2}    & Contextvrij      & Push-down        & Contextvrij      \\\noalign{\vskip-0.1pt}
+\textit{Type 1}    & Contextsensitief & Lineair begrensd & Contextsensitief \\\noalign{\vskip-0.1pt}
+\textit{Type 0}    & Herkenbaar       & Turingmachine    & Elke grammatica  \\\noalign{\vskip-0.1pt}
+\textit{Geen type} & Alle talen       & Geen             & Geen \\ \hline
+\end{tabular}
+\caption{De Chomsky-hi\"erarchie}
+\end{table}
