@@ -8,7 +8,7 @@ Om over te gaan naar de definitie van de reductie van talen, kunnen we best eers
 	Een functie $f$ heet Turing berekenbaar indien er een Turingmachine bestaat die bij input $s$ uiteindelijk stopt met $f(s)$ op de band.
 \end{theorem}
 
-\subsubsection*{(a) Veel-\'e\'en reductie ($\leq_m$)}
+\subsubsection*{Veel-\'e\'en reductie ($\leq_m$)}
 
 \begin{theorem}[Reductie van talen]
 	We zeggen dat taal $L_1$ (over $\Sigma_1$) naar taal $L_2$ (over $\Sigma_2$) kan gereduceerd worden indien er een afbeelding $f$ met signatuur $\Sigma^*_1\longrightarrow \Sigma^*_2$ bestaat zodanig dat $f(L_1) \subseteq L_2$ en $f(\overline{L_1}) \subseteq \overline{L_2}$, en zodanig dat $f$ Turing-berekenbaar is. We noteren dat door $L_1 \leq_m L_2$.
@@ -16,7 +16,7 @@ Om over te gaan naar de definitie van de reductie van talen, kunnen we best eers
 
 Tot hiertoe is het al duidelijk wat $L_1 \leq_m L_2$ wil zeggen. Het is nu nog belangrijk om het verband met herkenbaarheid en beslisbaarheid aan te tonen. Dit doen we aan de hand van verschillende, specifiekere stellingen apart te bewijzen. We kunnen achteraf dan de vorige bewijzen gebruiken om ze simpeler te maken.
 
-\begin{theorem}a
+\begin{theorem}
 	Als $L_1 \leq_m L_2$ en $L_2$ is beslisbaar, dan is $L_1$ beslisbaar.
 \end{theorem}
 
@@ -49,7 +49,7 @@ Tot hiertoe is het al duidelijk wat $L_1 \leq_m L_2$ wil zeggen. Het is nu nog b
 	Stel $L_1$ is niet-beslisbaar en $L_2$ wel. We hebben zonet bewezen dat als $L_2$ beslisbaar is, ook $L_1$ beslisbaar moet zijn. Contradictie.
 \end{proof}
 
-\subsubsection*{(b) Orakels en hi\"erarchie van beslisbaarheid ($\leq_T$)}
+\subsubsection*{Orakels en hi\"erarchie van beslisbaarheid ($\leq_T$)}
 
 Zoals we weten is een Turingmachine een handig hulpmiddel om te bepalen of strings tot een taal horen of niet. We kunnen de machines gebruiken om talen te herkennen, of specifieker, te beslissen. Niet alle talen kunnen echter beslist worden door zo een Turingmachine. Zo is het bijvoorbeeld onmogelijk om een Turingmachine op te stellen die de taal $A_{TM}$ beslist.
 \\\\

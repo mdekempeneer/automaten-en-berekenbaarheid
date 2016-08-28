@@ -1,5 +1,5 @@
 \begin{question}
-	Wat is een orakelmachine? Bespreek de uitspraak "de verzameling orakelmachines (over een gegeven orakel) is strikt krachtiger dan de verzameling van Turing machines". Leg hierbij ook uit wat men bedoeld met "krachtiger". Kan een verzameling orakelmachines (voor bepaald gegeven orakel) alle talen beslissen? Kan een orakelmachine ook $A_{TM}$ of $H_{TM}$ beslissen?
+	Wat is een orakelmachine? Bespreek de uitspraak ``de verzameling orakelmachines (over een gegeven orakel) is strikt krachtiger dan de verzameling van Turing machines''. Leg hierbij ook uit wat men bedoelt met ``krachtiger''. Kan een verzameling orakelmachines (voor bepaald gegeven orakel) alle talen beslissen? Kan een orakelmachine ook $A_{TM}$ of $H_{TM}$ beslissen?
 \end{question}
 
 \subsubsection*{Orakelmachine}
@@ -24,13 +24,13 @@ Een orakel kan voor vele problemen gebruikt worden. Het halting probleem is hier
 
 \subsubsection*{Krachtiger dan een Turingmachine}
 
-Zoals zonet vermeld, is een orakelmachine krachtiger dan een Turingmachine. Dit wil zeggen dat een orakelmachine sowiso meer talen kan beslissen dan een Turingmachine. Het kan namelijk alle talen beslissen die een Turingmachine kent vermeerderd met heel wat talen die anders in een oneindige lus zullen komen. $A_{TM}$ is daar een voorbeeld van. Een orakelmachine is dus strikt krachtiger dan een Turingmachine.
+Zoals zonet vermeld, is een orakelmachine krachtiger dan een Turingmachine. Dit wil zeggen dat een orakelmachine sowieso meer talen kan beslissen dan een Turingmachine. Het kan namelijk alle talen beslissen die een Turingmachine kent vermeerderd met heel wat talen die anders in een oneindige lus zullen komen. $A_{TM}$ is daar een voorbeeld van. Een orakelmachine is dus strikt krachtiger dan een Turingmachine.
 
 \subsubsection*{Verzameling orakelmachines}
 
 Normaal wordt een orakelmachine gegeven en kunnen we deze vraag concreet beantwoorden. Dit is nu dus onmogelijk. De redenering gaat echter van de volgende vorm zijn.
 \\\\
-Een orakel $O^A$ is gegeven dat een taal $A$ beslist. Volgens de definitie van Turingreduceerbaar (zie onderaan) kunnen we concluderen dat elke $B$, waarvoor geldt dat $B \leq_T A$, kan beslist worden door de orakelmachine $O^B$. Het is dus niet mogelijk om alle talen te beslissen, enkel die die Turingreduceerbaar zijn.
+Gegeven een orakel $O^A$ dat een taal $A$ beslist. Volgens de definitie van Turingreduceerbaar (zie onderaan) kunnen we concluderen dat elke $B$, waarvoor geldt dat $B \leq_T A$, kan beslist worden door de orakelmachine $O^B$. Het is dus niet mogelijk om alle talen te beslissen, enkel die die Turingreduceerbaar zijn.
 
 \begin{theorem}[Turingreduceerbaar]
 	Een taal $A$ is Turingreduceerbaar naar taal $B$, indien $A$ beslisbaar is relatief t.o.v. $B$, t.t.z. er bestaat een orakelachine $O^B$ die $A$ beslist. De notatie is $A \leq_T B$.

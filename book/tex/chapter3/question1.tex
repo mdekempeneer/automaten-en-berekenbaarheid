@@ -15,9 +15,9 @@ Indien het mogelijk is om via conversies $E_1$ om te vormen naar expressie $E_2$
 \end{theorem}
 
 \begin{proof}
-	Stel $E \stackrel{*}{\longleftrightarrow} E_1$ en $E \stackrel{*}{\longleftrightarrow} E_2$ waarbij $E_1$ en $E_2$ in normaalvorm staan, is $E_1 \stackrel{*}{\longleftrightarrow} E_2$ en dus bestaat er volgens \emph{CRI} een expressie $F$ zodat $E_1 \stackrel{*}{\longrightarrow} F$ en $E_2 \stackrel{*}{\longrightarrow} F$. Maar vermits $E_1$ en $E_2$ geen redexen bevatten, is $E_1 = F = E_2$ op $\alpha$-conversie na.
+	Stel $E \stackrel{*}{\longleftrightarrow} E_1$ en $E \stackrel{*}{\longleftrightarrow} E_2$ waarbij $E_1$ en $E_2$ in normaalvorm staan, dan is $E_1 \stackrel{*}{\longleftrightarrow} E_2$ en dus bestaat er volgens \emph{CRI} een expressie $F$ zodat $E_1 \stackrel{*}{\longrightarrow} F$ en $E_2 \stackrel{*}{\longrightarrow} F$. Maar vermits $E_1$ en $E_2$ geen redexen bevatten, is $E_1 = F = E_2$ op $\alpha$-conversie na.
 \end{proof}
-M.a.w. alle eindige reductierijen vanaf een expressie $E$ eindigen in dezelfde normaalvorm. Vooraleer we verder gaan met \emph{CRII} moeten we hetvolgende defini\"eren. De \emph{normaalorde} bepaalt dat de meest linkse buitenste redex eerst moet gereduceerd worden.
+M.a.w. alle eindige reductierijen vanaf een expressie $E$ eindigen in dezelfde normaalvorm. Vooraleer we verder gaan met \emph{CRII} moeten we het volgende defini\"eren. De \emph{normaalorde} bepaalt dat de meest linkse buitenste redex eerst moet gereduceerd worden.
 
 \begin{theorem}[Church-Rosser II]
 	Indien $E \stackrel{*}{\longrightarrow} N$, met $N$ in normaalvorm, dan bestaat er een reductierij in normaalorde van $E$ naar $N$.
@@ -27,8 +27,8 @@ M.a.w. alle eindige reductierijen vanaf een expressie $E$ eindigen in dezelfde n
 
 Het reduceren volgens een reductierij in normaalorde heeft zowel voor- als nadelen bij het gebruik in een programmeertaal. Wanneer de reductierij niet in normaalorde wordt toegepast, is het mogelijk dat een expressie $E$ op een snellere manier kan gereduceerd worden naar een expressie $N$ in normaalvorm.\\
 
-Wanneer we wel belang hechten aan de reductierij in normaalorde (zoals bij Haskell), dan zijn we instaat om parti\"ele functies te maken (aka currying).
+Wanneer we wel belang hechten aan de reductierij in normaalorde (zoals bij Haskell), dan zijn we in staat om parti\"ele functies te maken (aka currying).
 
 \subsubsection*{Conversieregels}
 
-We hebben drie verschillende conversieregels gezien, namelijk $\beta$-, $\alpha$ en $\eta$-conversie. $\alpha$-conversie kan omschreven worden als naamverandering van een formele parameter. $\beta$-conversie is het toepassen van een functie en vice versa. $\eta$-reductie is de eliminatie van redundante abstracties.
+We hebben drie verschillende conversieregels gezien, namelijk $\beta$-, $\alpha$- en $\eta$-conversie. $\alpha$-conversie kan omschreven worden als naamverandering van een formele parameter. $\beta$-conversie is het toepassen van een functie en vice versa. $\eta$-reductie is de eliminatie van redundante abstracties.

@@ -17,8 +17,8 @@
 	\end{figure}
 	Nu kunnen we verder met het bewijs. We proberen de stelling aan te tonen met een bewijs uit het ongerijmde. Stel dat $E_{TM}$ beslisbaar is en een beslisser $E$ heeft. We gaan nu een beslisser $B$ voor $A_{TM}$ opstellen met behulp van $E$\footnote{De beslisser $B$ kan niet bestaan, want $A_{TM}$ is onbeslisbaar. Dit wordt de contradictie.}. We kunnen twee punten inzien.
 	\begin{enumerate}
-		\item We stellen eerste onze hulpmachine $M_s$ op. We laten nu $E$ lopen over $<M_s>$. Stel dat $E$ nu $<M_s>$ accepteerd. $M_s$ accepteert dus geen strings (zie definitie $E_{TM}$). Merk op dat in dit geval $B$ $<M,s>$ niet accepteert. $M_s$ bepaalt de lege taal, dus $M$ bepaalt $s$ niet.
-		\item In het andere geval kan het zijn dat $E$ $<M,s>$ verwerpt. Dan bepaald $M_s$ wel een taal (die niet leeg is) en zal dus $B$ zijn input wel accepteren.
+		\item We stellen eerste onze hulpmachine $M_s$ op. We laten nu $E$ lopen over $<M_s>$. Stel dat $E$ nu $<M_s>$ accepteert. $M_s$ accepteert dus geen strings (zie definitie $E_{TM}$). Merk op dat in dit geval $B$ $<M,s>$ niet accepteert. $M_s$ bepaalt de lege taal, dus $M$ bepaalt $s$ niet.
+		\item In het andere geval kan het zijn dat $E$ $<M_s>$ verwerpt. Dan bepaalt $M_s$ wel een taal (die niet leeg is) en zal dus $B$ zijn input wel accepteren.
 	\end{enumerate}
 	Uit bovenstaande punten kunnen we concluderen dat $E$ de tegenovergestelde uitkomst heeft van $B$. $B$ bestaat echter niet, aangezien $A_{TM}$ niet beslisbaar is. $E$ kan dus ook geen beslisser zijn en $E_{TM}$ is dus niet beslisbaar. Contradictie.
 \end{proof}
@@ -35,7 +35,7 @@
 \subsubsection*{Alternatieve bewijzen}
 
 \begin{proof}
-	Een alternatief bewijs zou kunnen zijn met behulp van de stelling van Rice. Een taal-invariante, niet-triviale eigenschap van $E_{TM}$ is dat $L_M = \phi$ voor elke $M$ in $E_{TM}$ die $L_M$ bepaald. Volgens de stelling van Rice is $E_{TM}$ dus onbeslisbaar.
+	Een alternatief bewijs zou kunnen zijn met behulp van de stelling van Rice. Een taal-invariante, niet-triviale eigenschap van $E_{TM}$ is dat $L_M = \phi$ voor elke $M$ in $E_{TM}$ die $L_M$ bepaalt. Volgens de stelling van Rice is $E_{TM}$ dus onbeslisbaar.
 \end{proof}
 
 \subsubsection*{Bespreek $E_{CFG}$}
