@@ -1,0 +1,23 @@
+\begin{quest}[Recursie]
+	Geef de conversieregels voor lambda-calculus, bespreek de stellingen van Church-Rosser en leg a.d.h. daarvan uit hoe je een recursieve functie in lambda-calculus kunt maken. Geef ook een voorbeeld dat we niet besproken hebben in de cursus.
+\end{quest}
+
+De regels en de stellingen van \emph{Church-Rosser} zijn in de vorige vraag al aan bod gekomen. We bekijken nu enkel recursieve functies in meer detail.\\
+
+\begin{align*}
+	Pow 3 2 &= (YH) 3 2
+	\\&= H (YH) 3 2
+	\\&= (\lambda f . (\lambda xy. If (= Y 0) 1 (* x (f x (- Y 1)))))(YH) 3 2
+	\\&= (\lambda xy . If (= Y 0) 1 (* x ((Y H) x (- Y 1)))) 3 2
+	\\&= * 3 ((Y H) 3 1)
+	\\&= * 3 (H (Y H) 3 1)
+	\\&= * 3 ((\lambda f . (\lambda xy . If (= Y 0) 1 (* x (f x (- Y 1)))))(Y H) 3 1)
+	\\&= * 3 ((\lambda xy . If (= Y 0) 1 (* x ((YH)x(- Y 1)))) 3 1)
+	\\&= * 3 (* 3 ((Y H)3 0))
+	\\&= * 3 (* 3 (H(YH) 3 0))
+	\\&= * 3 (* 3 ((\lambda f (\lambda xy . If (= Y 0)1(* x(f x(-Y 1)))))(Y H)3 0))
+	\\&= * 3 (* 3 ((\lambda xy . If (=Y 0) 1(* x ((Y H)x(- Y 1))))3 0))
+	\\&= * 3 (* 3 1)
+	\\&= * 3 3
+	\\&= 9
+\end{align*}

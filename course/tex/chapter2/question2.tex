@@ -1,6 +1,6 @@
-\begin{question}
+\begin{quest}[Reduceerbaarheid]
 	Bespreek de twee noties ($A \leq_m B$ en $A \leq_T B$) van reduceerbaarheid, hun verband en op welke manier die noties kunnen gebruikt worden om aan te tonen dat een taal (on)beslisbaar/herkenbaar is.
-\end{question}
+\end{quest}
 
 Om over te gaan naar de definitie van de reductie van talen, kunnen we best eerst de definifie van Turing-berekenbaar erbij halen (indien we dit niet doen, kunnen we zeker zijn van deze bijvraag).
 
@@ -16,13 +16,13 @@ Om over te gaan naar de definitie van de reductie van talen, kunnen we best eers
 
 Tot hiertoe is het al duidelijk wat $L_1 \leq_m L_2$ wil zeggen. Het is nu nog belangrijk om het verband met herkenbaarheid en beslisbaarheid aan te tonen. Dit doen we aan de hand van verschillende, specifiekere stellingen apart te bewijzen. We kunnen achteraf dan de vorige bewijzen gebruiken om ze simpeler te maken.
 
-\begin{theorem}
+\begin{theorem}a
 	Als $L_1 \leq_m L_2$ en $L_2$ is beslisbaar, dan is $L_1$ beslisbaar.
 \end{theorem}
 
 \begin{proof}
 	Het is belangrijk te weten dat de functie $f$, die elementen uit $L_1$ omzet naar element uit $L_2$, Turing-berekenbaar is. Concreet wil dit zeggen dat we de mogelijkheid hebben om een turingmachine op te stellen met als in put $s_1 \in L_1$ en als output $f(s_1) \in L_2$.\\
-	Neem nu dat $L_2$ beslisbaar is, met zijn beslisser $B$. We construeren  nu een machine $F$ die elementen uit $L_1$ omzet (via $f$) naar elementen uit $L_2$, waarna we de beslisser $B$ laten beslissen. Hupsa, de combinatie van $F$ en $B$ is de beslisser van $L_1$ en ook deze taal is dus ook beslisbaar.
+	Neem nu dat $L_2$ beslisbaar is, met zijn beslisser $B$. We construeren  nu een machine $F$ die elementen uit $L_1$ omzet (via $f$) naar elementen uit $L_2$, waarna we de beslisser $B$ laten beslissen. Hupsa, de combinatie van $F$ en $B$ is de beslisser van $L_1$ en ook deze taal is dus beslisbaar.
 \end{proof}
 
 \begin{theorem}
@@ -80,13 +80,11 @@ Dit is inderdaad zeer gelijkend op het eerste deel van deze vraag. In plaats van
 \end{theorem}
 
 \begin{proof}
-	De definitie zegt ons dat $A \leq_T B$ enkel geldt indien we een orakelmachine $O^B$ hebben dat $B$ \'en $A$ beslist. Dit is dus volledig afleidbaar van de definitie.\\
-	Of anders: stel dat $B$ beslisbaar is en $A$ niet. Dan hebben we een orakel $O^B$ dat (theoretisch) $B$ beslist, maar niet $A$ (want deze is niet beslisbaar). Dit is meteen een contradictie met de definitie.
+	De definitie zegt ons dat $A \leq_T B$ enkel geldt indien we een orakelmachine $O^B$ hebben dat $B$ \'en $A$ beslist. Dit is dus volledig afleidbaar van de definitie. Of anders: stel dat $B$ beslisbaar is en $A$ niet. Dan hebben we een orakel $O^B$ dat (theoretisch) $B$ beslist, maar niet $A$ (want deze is niet beslisbaar). Dit is meteen een contradictie met de definitie.
 \end{proof}
 
 \begin{theorem}
-	Indien $A \leq_m B$ dan is ook $A \leq_T B$.\\
-	M.a.w. $\leq_m$ is fijner dan $\leq_T$.
+	Indien $A \leq_m B$ dan is ook $A \leq_T B$. M.a.w. $\leq_m$ is fijner dan $\leq_T$.
 \end{theorem}
 
 Dit is vanzelfsprekend indien we beseffen dat het orakel een theoretische uitbreiding is op de Turingmachine. We gebruiken de Turingmachines om talen te herkennen of the beslissen. Het is mogelijk zo een machine te implementeren in een taal naar keuze. Er is echter een grens op het aantal talen dat we kunnen beslissen, aangezien een aantal in een oneindige lus kunnen komen tijdens het beslissingsproces. Dit is een probleem dat we in de praktijk kunnen tegenkomen. Een theoretische oplossing daarvoor is de orakelmachine. We kunnen deze machine wel gebruiken om theoretisch verder te redeneren. Dit will zeggen dat het orakel alle talen beslist dit een Turingmachine kan besliseen, plus de talen die een turingmachine niet kan beslissen (oneindig lus). Hierdoor is $A \leq_m B$ fijner dan $A \leq_T B$.

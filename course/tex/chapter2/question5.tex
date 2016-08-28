@@ -1,8 +1,8 @@
-\begin{question}
-	Leg de stelling van Rice uit, en geef het bewijs. Geef minstens \'e\'en eigenschap van Turingmachines die niet voldoet aan de voorwaarde voor de stelling van Rice en toon aan dat die eigenschap geen aanleiding geeft tot een niet-beslisbare taal. Karakteriseer volledig alle eigenschappen van Turingmachines die aan de stelling van Rice voldoen m.b.v. $IsIn_{TM,S}$.
-\end{question}
+\begin{quest}[Stelling van Rice]
+	Leg de stelling van Rice uit en geef het bewijs. Geef minstens \'e\'en eigenschap van Turingmachines die niet voldoet aan de voorwaarde voor de stelling van Rice en toon aan dat die eigenschap geen aanleiding geeft tot een niet-beslisbare taal. Karakteriseer volledig alle eigenschappen van Turingmachines die aan de stelling van Rice voldoen m.b.v. $IsIn_{TM,S}$.
+\end{quest}
 
-\subsubsection*{(a) De stelling van Rice}
+\subsubsection*{De stelling van Rice}
 
 Vooraleer we verder gaan met de stelling van Rice is het verstandig om sommige termen te verklaren. Niet-triviale en taal-invariante eigenschappen zijn een belangrijk onderdeel van de stelling. In onderstaande verklaringen duidt $Pos_P$ op de verzameling van machines die in het bezit zijn van een eigenschap $P$ en $Neg_P$ de verzameling van machines zonder eigenschap $P$.
 
@@ -22,7 +22,7 @@ Vooraleer we verder gaan met de stelling van Rice is het verstandig om sommige t
 \end{theorem}
 
 \begin{proof}
-	We bewijzen dit met hehulp van een contradictie. Neem de Turingmachine $M_\emptyset$ die de lege taal beslist. Laten we er nu van uit gaan dat deze machine een bepaalde eigenschap $P$ heeft. De stelling zegt ons dat de eigenschap $P$ niet-triviaal en taal-invariant is. Uit de definitie kunnen we dan afleiden dat $Pos_P \neq \emptyset$ (en ook $Neg_P \neq \emptyset$). Aangezien deze verzameling niet leeg is, moet er een Turingmachine $X$ bestaan met deze eigenschap $P$. Laat ons zeggen dat deze Turingmachine de taal $L_X$ beslist.\\\\
+	We bewijzen dit met behulp van een contradictie. Neem de Turingmachine $M_\emptyset$ die de lege taal beslist. Laten we er nu van uit gaan dat deze machine een bepaalde eigenschap $P$ heeft. De stelling zegt ons dat de eigenschap $P$ niet-triviaal en taal-invariant is. Uit de definitie kunnen we dan afleiden dat $Pos_P \neq \emptyset$ (en ook $Neg_P \neq \emptyset$). Aangezien deze verzameling niet leeg is, moet er een Turingmachine $X$ bestaan met deze eigenschap $P$. Laat ons zeggen dat deze Turingmachine de taal $L_X$ beslist.\\\\
 	We gaan nu proberen een contradictie te bekomen door aan te nemen dat de stelling niet waar is. We nemen dus aan dat $Pos_P$ (en dus ook $Neg_P$) beslisbaar is. We gaan nu een beslisser $B$ proberen op te stellen voor $Pos_P$ die deze beslist\footnote{Later zullen we deze $B$ gebruiken om een beslisser $A$ te maken voor de taal met Turingmachines $A_{TM}$}. Om $B$ te maken, gaan we eerst een hulpmachine $H_{M,s}$ opstellen.\\\\
 	Deze hulpmachine $H_{M,s}$ heeft een Turingmachine $M$ en een string $s$ in zich. Deze staan vast voor de machine en kunnen dus niet veranderen\footnote{Ze zijn als het ware gehardcoded.}. De input van deze machine is een string $x \in L_X$. Wanneer $H_{M,s}$ gestart wordt, zal deze eerst $M$ laten lopen over $s$. Indien $M$ $s$ reject, zal $H_{M,x}$ altijd rejecten. Indien $M$ $s$ accept, dan zal $H_{M,s}$ overgaan naar fase 2. Hier zal de hulpmachine $X$ over $x$ laten lopen. Indien $X$ $x$ ook accept, dan zal de hulpmachine accepten. Indien $X$ $x$ reject, dan zal ook de hulpmachine rejecten.
 	\begin{figure}[H]
@@ -47,7 +47,7 @@ Vooraleer we verder gaan met de stelling van Rice is het verstandig om sommige t
 	Conclusie: $A$ is een beslisser voor $A_{TM}$, maar dit is onmogelijk aangezien $A_{TM}$ niet beslisbaar is\footnote{Zie vraag 1 van dit hoofdstuk voor het bewijs.}. Hieruit kunnen we concluderen dat alle bovenstaand equivalenties onwaar zijn en dus is  ook $Pos_P$ niet beslisbaar. Contradictie.
 \end{proof}
 
-\subsubsection*{(b) Voorbeeld}
+\subsubsection*{Voorbeeld}
 
 We nemen de Turingmachine $TM$ als voorbeeld. We stellen ons de vraag over de volgende eigenschap. Zal de Turingmachine $TM$ ooit zijn leeskop naar links verschuiven? We kunnen hier een beslisser voor opstellen.
 \\\\

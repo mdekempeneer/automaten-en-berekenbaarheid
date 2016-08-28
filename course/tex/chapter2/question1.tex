@@ -1,52 +1,52 @@
-\begin{question}
+\begin{quest}[$A_{TM}$ is niet beslisbaar]
 	Bewijs dat $A_{TM}$ niet beslisbaar is en steun daarbij niet op de stelling van \textit{Rice}. Zou het helpen als het toegelaten was op de stelling van \textit{Rice} te steunen? Is $A_{TM}$ herkenbaar? Co-herkenbaar?
-\end{question}
+\end{quest}
 
 We hebben het hier over het acceptatieprobleem voor Turinmachines. We noemen de taal $A_{TM}$ met de volgende formele definitie. Informeel is elk element een tuple met het eerste element een ge\"encodeerde Turingmachine die de string $s$, het tweede element, accepteerd.
 \begin{center}
 	$A_{TM} = \{ <M,s> |$ \textit{$M$ is een Turingmachine en} $ s \in L_M\}$
 \end{center}
 
-\subsubsection*{(a) $A_{TM}$ is niet beslisbaar}
+\subsubsection*{$A_{TM}$ is niet beslisbaar}
 \begin{proof}
 	Stel er bestaat een beslisser $B$ voor $A_{TM}$. De werking van $B$ kan op de volgende manier formeel gedefinieerd worden.
-	
+
 	\begin{pushcenter}
 		$B(<M,s>)$ \textit{is accept als $M$ $s$ accepteert en anders reject}
 	\end{pushcenter}
-	
+
 	$B$ weigert dus indien $M$ de input $s$ weigert of wanneer $M$ in een oneindige lus zit.
-	We construeren nu een contradictie machine $C$ met de eigenschap om telkens het tegenovergestelde te accepteren (of te weigeren) van $B$. We kunnen dit op de volgende manier formeel schrijven.
-	
+	We construeren nu een contradictie machine $C$ met de eigenschap om telkens het tegenovergestelde te accepteren (of te weigeren) van $B$. $C$ neemt daarbij enkel Machine $M$ als input en accept indien $M$ de string representatie van zichzelf accepteert. We kunnen dit op de volgende manier formeel schrijven.
+
 	\begin{pushcenter}
 		$\forall$ \textit{Turingmachine $M:$ $C(<M>) = \neg (B(<M,M>))$}
 	\end{pushcenter}
-	
+
 	Daarbij is $\neg accept = reject$ en $\neg reject = accept$.  Neem nu voor $M$ hierboven $C$ zelf en vul deze in in $C$ en $B$ zelf. De volgende bewering komt tot stand.
-	
+
 	\begin{pushcenter}
 		$C(<C>) = \neg (B(<C,C>))$
-	\end{pushcenter}		
-	
-	We zien dat $C$ zichzelf test. Indien $C$ zichzelf accepteerd, dan is $\neg B(C,C) = accept$. Aangezien $C$ $C$ accepteert, moet $B(C,C) = accept$ en dus $\neg B(C,C) = reject$. Contradictie.
+	\end{pushcenter}
+
+	We zien dat $C$ zichzelf test. Indien $C$ zichzelf accepteert, dan is $\neg B(C,C) = C(C) = accept$. Aangezien $C$ $C$ accepteert, moet $B(C,C) = accept$ en dus $\neg B(C,C) = reject$. Contradictie.
 	\\\\
 	Conclusie: $C$ kan niet bestaan. Indien $B$ bestaat kan $C$ wel bestaan, dus $B$ bestaat ook niet. $A_{TM}$ is dus niet beslisbaar.
-\end{proof} 
+\end{proof}
 
-\subsubsection*{(b) De stelling van Rice}
+\subsubsection*{De stelling van Rice}
 
 \begin{theorem}[Stelling van Rice]
 	Voor elke niet-triviale, taal-invariante eigenschap $P$ van Turingmachines geldt dat $Pos_P$ (en ook $Neg_P$) niet beslisbaar is.
 \end{theorem}
 
-Met deze stelling zouden we het hele bewijs kunnen inkorten. Door een niet-triviale, taal-invariante eigenschap $P$ te vinden van alle Turingmachines die $s$ herkennen, hebben we meteen aangetoond dat de taal in kwestie, $A_{TM}$ niet beslisbaar is.\footnote{Voor meer informatie over het bewijs, zie het laatste hoofdstuk.} Deze taal komt dan overeen met $Pos_P$\footnote{Ik heb suggesties nodig voor $P$! Gooi ze op Github.}.
+Met deze stelling zouden we het hele bewijs kunnen inkorten. Door een niet-triviale, taal-invariante eigenschap $P$ te vinden van alle Turingmachines die $s$ herkennen, hebben we meteen aangetoond dat de taal in kwestie, $A_{TM}$ niet beslisbaar is.\footnote{Voor meer informatie over het bewijs, zie het laatste hoofdstuk.} Deze taal komt dan overeen met $Pos_P$. Een eigenschap van $<M,s>$ is bijvoorbeeld dat $M$ $s$ accepteerd. $Pos_p = A_{TM}$ en dus is $A_{TM}$ niet beslisbaar.
 
-\subsubsection*{(c) $A_{TM}$ is herkenbaar}
+\subsubsection*{$A_{TM}$ is herkenbaar}
 \begin{proof}
 	De herkenner $A$ voor $A_{TM}$ laat, met input $<M,s>$, $M$ lopen op $s$. Indien deze $M$ $s$ accepteerd, dan accepteerd $A$ zijn input. Indien deze de input $reject$, of gewoon niet stopt, dan zal $A$ deze ook niet accepteren. $A_{TM}$ is dus herkenbaar (ook hier zien we dat $A_{TM}$ niet beslisbaar is omdat deze kan blijven lopen).
 \end{proof}
 
-\subsubsection*{(d) $A_{TM}$ is niet co-herkenbaar}
+\subsubsection*{$A_{TM}$ is niet co-herkenbaar}
 \begin{proof}
 	$A_{TM}$ kan echter niet co-herkenbaar zijn. We bewijzen dit met contradictie. Indien $A_{TM}$ co-herkenbaar is, is deze dus herkenbaar en co-herkenbaar (zie vorig bewijs). Wanneer een taal deze beide eigenschappen bezit, is deze beslisbaar. Dit is een contradictie met het eerste bewijs.
 \end{proof}
