@@ -5,19 +5,19 @@
 De regels en de stellingen van \emph{Church-Rosser} zijn in de vorige vraag al aan bod gekomen. We bekijken nu enkel recursieve functies in meer detail.\\
 
 \begin{align*}
-	Pow 3 2 &= (YH) 3 2
-	\\&= H (YH) 3 2
-	\\&= (\lambda f . (\lambda xy. If (= Y 0) 1 (* x (f x (- Y 1)))))(YH) 3 2
-	\\&= (\lambda xy . If (= Y 0) 1 (* x ((Y H) x (- Y 1)))) 3 2
-	\\&= * 3 ((Y H) 3 1)
-	\\&= * 3 (H (Y H) 3 1)
-	\\&= * 3 ((\lambda f . (\lambda xy . If (= Y 0) 1 (* x (f x (- Y 1)))))(Y H) 3 1)
-	\\&= * 3 ((\lambda xy . If (= Y 0) 1 (* x ((YH)x(- Y 1)))) 3 1)
-	\\&= * 3 (* 3 ((Y H)3 0))
-	\\&= * 3 (* 3 (H(YH) 3 0))
-	\\&= * 3 (* 3 ((\lambda f (\lambda xy . If (= Y 0)1(* x(f x(-Y 1)))))(Y H)3 0))
-	\\&= * 3 (* 3 ((\lambda xy . If (=Y 0) 1(* x ((Y H)x(- Y 1))))3 0))
-	\\&= * 3 (* 3 1)
-	\\&= * 3 3
+	\text{Pow} \enskip  3 \enskip 2 \enskip &= (Y\enskip H) \enskip 3 \enskip 2
+	\\&= H \enskip (Y\enskip H) \enskip 3 \enskip 2
+	\\&= (\lambda f. \enskip (\lambda xy. \enskip \text{IF} \enskip (= \enskip Y \enskip 0) \enskip 1 \enskip (* \enskip x \enskip (f \enskip x \enskip (- \enskip Y \enskip 1)))))(Y\enskip H) \enskip 3 \enskip 2
+	\\&= (\lambda xy. \enskip \text{IF} \enskip (= \enskip Y \enskip 0) \enskip 1 \enskip (* \enskip x \enskip ((Y \enskip H) \enskip x \enskip (- \enskip Y \enskip 1)))) \enskip 3 \enskip 2
+	\\&= * \enskip 3 \enskip ((Y \enskip H) \enskip 3 \enskip 1)
+	\\&= * \enskip 3 \enskip (H \enskip (Y \enskip H) \enskip 3 \enskip 1)
+	\\&= * \enskip 3 \enskip ((\lambda f. \enskip (\lambda xy. \enskip \text{IF} \enskip (= \enskip Y \enskip 0) \enskip 1 \enskip (* \enskip x \enskip (f \enskip x \enskip (- \enskip Y \enskip 1)))))(Y \enskip H) \enskip 3 \enskip 1)
+	\\&= * \enskip 3 \enskip ((\lambda xy. \enskip \text{IF} \enskip (= \enskip Y \enskip 0) \enskip 1 \enskip (* \enskip x \enskip ((Y\enskip H)\enskip x\enskip (- \enskip Y \enskip 1)))) \enskip 3 \enskip 1)
+	\\&= * \enskip 3 \enskip (* \enskip 3 \enskip ((Y \enskip H)\enskip 3 \enskip 0))
+	\\&= * \enskip 3 \enskip (* \enskip 3 \enskip (H\enskip (Y \enskip H) \enskip 3 \enskip 0))
+	\\&= * \enskip 3 \enskip (* \enskip 3 \enskip ((\lambda f \enskip (\lambda xy. \enskip \text{IF} \enskip (= \enskip Y \enskip 0)\enskip 1\enskip (* \enskip x\enskip (f \enskip x(-Y \enskip 1)))))(Y \enskip H)\enskip 3 \enskip 0))
+	\\&= * \enskip 3 \enskip (* \enskip 3 \enskip ((\lambda xy. \enskip \text{IF} \enskip (=Y \enskip 0) \enskip 1(* \enskip x \enskip ((Y \enskip H)\enskip x\enskip (- \enskip Y \enskip 1))))\enskip 3 \enskip 0))
+	\\&= * \enskip 3 \enskip (* \enskip 3 \enskip 1)
+	\\&= * \enskip 3 \enskip 3
 	\\&= 9
 \end{align*}
