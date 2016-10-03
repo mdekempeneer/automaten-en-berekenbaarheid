@@ -14,7 +14,7 @@ proberen ze zo snel mogelijk te fixen.
 
 ## Download
 
-Gewoon `script.tex` compilen is voldoende. [Hier](https://raw.githubusercontent.com/Jense5/a-b/master/bin/script.pdf) vind je echter een download link naar
+Gewoon `script.tex` compilen is voldoende. [Hier](https://github.com/Jense5/automaten-en-berekenbaarheid/blob/master/book/bin/script.pdf) vind je echter een download link naar
 de pdf, gecompiled op *03/10/16*. Ik raad toch aan om zelf te compilen zodat je steeds
 beschikt over de nieuwste versie.
 
