@@ -1,6 +1,4 @@
 
--- Don't look at it! it's still ugly and just an idea
-
 -- Declare datas for Machine
 data Action = L | S | R deriving (Show, Read)
 
@@ -21,15 +19,6 @@ type Refuse = Int
 -- Declare a Machine
 data Machine = Machine DecisionTable Start Accept Refuse
                        deriving (Show, Read)
-
-
-
-
-
-
-
-
-
 
 action :: DecisionTable -> State -> Char -> (State, Char, Action)
 action d s c = head [(s', c', a)|(os, oc, s', c', a) <- d, (==) os s, (==) oc c]
@@ -53,16 +42,6 @@ determine :: Machine -> Input -> Acceptance
 determine (Machine decisions start accept reject) input =
   process (Machine decisions start accept reject) start ("") input
 
-
-
-
-
-
-
-
-
-
-
 -- Gives a basic DT to decide {0^n1^n|n>=0}. The start state is 0, acceptance
 -- state is 6 and the trash state is 5. See "Automaten en Berekenbaarheid"
 -- page 88 for a graphical representation of this Turing machine.
@@ -85,7 +64,7 @@ decisions =  [  (0, '#', 6, '#', S),
 
 -- Gives a basic Turing machine with the decision table above to decide {0^n1^n|n>=0}.
 -- The start state is 0, acceptance state is 6 and the trash state is 5. See
--- "Automaten en Berekenbaarheid" page 99 for a geaphical reprentation of this
+-- "Automaten en Berekenbaarheid" page 99 for a graphical reprentation of this
 -- Turing machine.
 basicMachine :: Machine
 basicMachine = Machine decisions 0 6 5
