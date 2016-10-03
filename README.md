@@ -18,4 +18,6 @@ Gewoon `script.tex` compilen is voldoende. [Hier](https://github.com/Jense5/auto
 de pdf, gecompiled op *03/10/16*. Ik raad toch aan om zelf te compilen zodat je steeds
 beschikt over de nieuwste versie.
 
+Een Haskell implementatie van een Turing machine kun je [hier](https://github.com/Jense5/turing-machine) terugvinden.
+
 **Content distributed under MIT.**
