@@ -18,6 +18,4 @@ Gewoon `script.tex` compilen is voldoende. [Hier](https://raw.githubusercontent.
 de pdf, gecompiled op *03/10/16*. Ik raad toch aan om zelf te compilen zodat je steeds
 beschikt over de nieuwste versie.
 
-## License
-
-Content distributed under MIT. Check the license file for more info.
+**Content distributed under MIT.**
