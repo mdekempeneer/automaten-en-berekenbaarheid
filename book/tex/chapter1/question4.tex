@@ -16,7 +16,7 @@ Voor een reguliere taal L bestaat een pomplengte $d$, zodanig dat als $s \in L$ 
 \end{theorem}
 
 \begin{proof}
-Neem een \emph{DFA} die \emph{L} bepaalt. Neem $d=\#Q+1$. Neem ook een willekeurige string $s = a_1a_2 \hdots a_n$ met $n \geq d$. Beschouw nu de accepterende sequentie van toestanden $q_s = q_1,q_2,\hdots,q_f$ voor $s$; die heeft een lengte strikt groter dan $d$, dus zijn er bij de eerste $d$ zeker twee toestanden gelijk (omdat er maar $d-1$ toestanden zijn).\\
+Neem een \emph{DFA} die \emph{L} bepaalt. Neem $d=\#Q+1$. Neem ook een willekeurige string $s = a_1a_2 \hdots a_n$ met $n \geq d$. Beschouw nu de accepterende sequentie van toestanden $q_s = q_1,q_2,\hdots,q_f$ voor $s$; die heeft een lengte strikt groter dan $d$, van de eerste $d$ toestanden zijn er dus zeker (minstens) twee gelijk (omdat er maar $\#Q = d-1$ toestanden zijn).\\
 
 Stel dat $q_i$ en $q_j$ gelijk zijn met $i<j \leq d$, dan nemen we $x=a_1a_2\hdots a_i$ en $y=a_{i+1} \hdots a_j$ en $z$ de rest van de string. Alles volgt nu direct.
 \end{proof}
