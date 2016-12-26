@@ -31,7 +31,9 @@ $$ q_{sd} = eb(q_{sn}) $$
 \end{itemize}
 
 \subsubsection*{Equivalentie}
-Twee automaten zijn equivalent als ze dezelfde taal bepalen. Het algoritme dat we zonet hebben beschreven, is in staat om alle $\epsilon$-bogen weg te werken. Deze veranderen niets aan de taal die bepaalt wordt door de automaat. De gegeven \emph{NFA} en de bekomen \emph{DFA} zijn dus equivalent ($L_{DFA} = L_{NFA}$).
+Twee automaten zijn equivalent als ze dezelfde taal bepalen. Het algoritme dat we zonet hebben beschreven, is in staat om alle $\epsilon$-bogen weg te werken. Deze veranderen niets aan de taal die bepaalt wordt door de automaat. De gegeven \emph{NFA} en de bekomen \emph{DFA} zijn dus equivalent ($L_{DFA} = L_{NFA}$).  De transformatie is correct aangezien de transformatie de taal bepaald door de automaat niet verandert.
+
+We kunnen dus in het algemeen ook stellen dat twee NFA's equivalent zijn als en slechts als hun bijhorende DFA's (bekomen door de transformatie beschreven in het algoritme hierboven) equivelent zijn. Of nog: twee NFA's bepalen dezelfde taal als hun bijhorende DFA's dezelfde taal bepalen.
 
 \subsubsection*{Deterministische transformatie}
 Aangezien deze werkwijze alle mogelijke toestanden genereert, alsook alle mogelijk bogen, is er maar \'e\'en mogelijke uitkomst. Het is mogelijk om de toestanden en bogen van de \emph{DFA} op een andere volgorde te construeren, maar dit zal steeds leiden tot dezelfde \emph{DFA}.
