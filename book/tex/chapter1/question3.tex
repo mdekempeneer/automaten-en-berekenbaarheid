@@ -45,7 +45,56 @@ Dit doen we door herhaaldelijk een willekeurige toestand $X$ verschillend van de
 \item Doe dit voor alle koppels $A$ en $B$
 \item Verwijder de knoop $X$ met alle bogen die erin toekomen of vertrekken.
 \end{enumerate}
-Indien er geen toestanden meer zijn, ga dan naar de volgende stap. Op dit moment hebben we een \emph{GNFA} met twee toestanden.
+Indien er geen toestanden meer zijn, ga dan naar de volgende stap. Op dit moment hebben we een \emph{GNFA} met twee toestanden.\\
+\\
+In de 4 stappen hierboven is het uiteraard ook mogelijk dat bogen $E_2$ en/of $E_4$ het label $\phi$ hebben. Bijvoorbeeld: de automaat hieronder aan de linkerkant is  equivalent met de automaat aan de rechterkant.
+\\
+\\
+\begin{minipage}{.5\textwidth}
+\center
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state]         (A)  [draw] at (0,0) {$A$};
+  \node[state]         (B) [draw] at (3,-1) {$B$};
+  \node[state]         (X) [draw] at (1,-2) {$X$};
+
+  \path (A) edge [bend left] node {$E_4 = \phi$} (B)
+            	  edge [bend right] node {$E_1$} (X)
+           (X) edge [out=195,in=265,loop, outer sep=3pt] node [below] {$E_2 = \phi$} (X)
+           		  edge [bend right] node {$E_3$} (B) ;
+\end{tikzpicture}
+\end{minipage}% This must go next to `\end{minipage}`
+$\Longrightarrow$
+\begin{minipage}{.5\textwidth}
+\center
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state]         (A)  [draw] at (0,0) {$A$};
+  \node[state]         (B) [draw] at (3,-1) {$B$};
+  \node[state]         (X) [draw] at (1,-2) {$X$};
+
+  \path (A) edge [bend right] node {$E_1$} (X)
+           (X) edge [bend right] node {$E_3$} (B) ;
+\end{tikzpicture}
+\end{minipage}
+
+Dit levert na de uitvoering van het algoritme hierboven eenvoudigweg het volgende:
+\begin{figure}[H]
+\center
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+
+  \node[state]         (A)  [draw] at (0,0) {$A$};
+  \node[state]         (B) [draw] at (3,-1) {$B$};
+
+  \path (A) edge [bend left] node {$E_1E_3$} (B) ;
+\end{tikzpicture}
+\end{figure}
 
 \subsubsection*{Bepaal de reguliere expressie}
 De \emph{GNFA} heeft nu exact twee toestanden (een start- en eindtoestand) met daartussen \'e\'en boog. Deze boog heeft nu een reguliere expressie als label. Dit is de reguliere expressie die dezelfde taal bepaald als de oorspronkelijke \emph{NFA}.
