@@ -26,7 +26,7 @@ We kunnen onze \emph{NFA} omzetten naar een \emph{GNFA} als volgt:
 \item Maak een nieuwe starttoestand en een nieuwe (unieke) eindtoestand
 \item Teken $\epsilon$-bogen van de nieuwe begintoestand naar de oude begintoestand (van de \emph{NFA}) en van elke oude eindtoestand (van de \emph{NFA}) naar de nieuwe eindtoestand.
 \item Teken ontbrekende bogen met een $\phi$-label.
-\item Als er tussen twee toestanden twee of meer parallele gerichte bogen zijn, neem die dan samen met als label de unie van de labels van de parallelle bogen.
+\item Als er tussen twee toestanden twee of meer parallel gerichte bogen zijn, neem die dan samen met als label de unie van de labels van de parallelle bogen.
 \end{enumerate}
 Deze omzetting van \emph{NFA} naar \emph{GNFA} verandert de taal niet. We doen namelijk enkel correct manipulaties van de \emph{NFA}.\\
 Nu we een \emph{GNFA} geconstrueerd hebben moeten we deze reduceren naar een GNFA met 2 toestanden.

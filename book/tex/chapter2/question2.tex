@@ -2,7 +2,7 @@
 	Bespreek de twee noties ($A \leq_m B$ en $A \leq_T B$) van reduceerbaarheid, hun verband en op welke manier die noties kunnen gebruikt worden om aan te tonen dat een taal (on)beslisbaar/herkenbaar is.
 \end{quest}
 
-Om over te gaan naar de definitie van de reductie van talen, kunnen we best eerst de definifie van Turing-berekenbaar erbij halen (indien we dit niet doen, kunnen we zeker zijn van deze bijvraag).
+Om over te gaan naar de definitie van de reductie van talen, kunnen we best eerst de definitie van Turing-berekenbaar erbij halen (indien we dit niet doen, kunnen we zeker zijn van deze bijvraag).
 
 \begin{theorem}[Turing-berekenbare functie]
 	Een functie $f$ heet Turing berekenbaar indien er een Turingmachine bestaat die bij input $s$ uiteindelijk stopt met $f(s)$ op de band.
@@ -57,7 +57,7 @@ Dit zorgt er voor dat we op zoek moeten gaan naar een betere machine die naast h
 \\\\
 Een orakelmachine is een uitbreiding op de Turingmachine, die een orakel bevat. Je kan een orakel bekijken als een black box waar de Turingmachine vragen een kan stellen. In theorie is een orakel eigenlijk een soort bitmap, of anders gezegd een rij van booleans. Stel we ordenen alle strings volgens de lexicografische orde met kortere strings eerst. Elke string op index $i$ komt nu overeen met een booleaanse waarde in de bitmap, die ook gealloceerd is op locatie $i$. Indien de string op een bepaalde locatie tot een gegeven taal $L$ behoord, dan zal de overeenkomstige booleaanse waarde op $true$ staan. Indien dit niet het geval is, blijft de waarde op $false$.
 \\\\
-De werking van een orakelmachine is nu heel eenvoudig. Het krijgt als input een string $s$. De machine vraagt nu aan het orakel of de string tot een taal behoort. Het orakel is in staat om de string om te vormen naar de index in de rij volgens de lexicografische volgorde en raadpleegt de overeenkomstige booleaanse waarde in de bitmap. Is die waarde $true$, dan accepteert het orakel de string $s$. Indien de waarde $false$ is, dan wordt de string $s$ geweigert. Een orakelmachine waarvan de bitmap een configuratie heeft voor een bepaalde taal $L$ te beslissen, noemen we $O^L$.
+De werking van een orakelmachine is nu heel eenvoudig. Het krijgt als input een string $s$. De machine vraagt nu aan het orakel of de string tot een taal behoort. Het orakel is in staat om de string om te vormen naar de index in de rij volgens de lexicografische volgorde en raadpleegt de overeenkomstige booleaanse waarde in de bitmap. Is die waarde $true$, dan accepteert het orakel de string $s$. Indien de waarde $false$ is, dan wordt de string $s$ geweigerd. Een orakelmachine waarvan de bitmap een configuratie heeft voor een bepaalde taal $L$ te beslissen, noemen we $O^L$.
 
 \vspace{3mm}
 \begin{figure}[h!]
@@ -70,7 +70,7 @@ De werking van een orakelmachine is nu heel eenvoudig. Het krijgt als input een 
 Een orakel kan voor vele problemen gebruikt worden. Het halting probleem is hier echter maar \'e\'en enkel voorbeeld van. Vaak wordt een orakel gebruikt om op een abstracte manier een antwoord te krijgen op een bepaalde vraag. Deze vraag kan zelfs onoplosbaar zijn.
 
 \begin{theorem}[Turingreduceerbaar]
-	Een taal $A$ is Turingreduceerbaar naar taal $B$, indien $A$ beslisbaar is relatief t.o.v. $B$, t.t.z. er bestaat een orakelachine $O^B$ die $A$ beslist. De notatie is $A \leq_T B$.
+	Een taal $A$ is Turingreduceerbaar naar taal $B$, indien $A$ beslisbaar is relatief t.o.v. $B$, t.t.z. er bestaat een orakelmachine $O^B$ die $A$ beslist. De notatie is $A \leq_T B$.
 \end{theorem}
 
 Dit is inderdaad zeer gelijkend op het eerste deel van deze vraag. In plaats van een beslisser voor $B$ te hebben, die $A$ ook beslist, gebruiken we nu een orakelmachine. Deze machine is dan een theoretisch hulpmiddel dat we kunnen gebruiken om onze kennis toe te passen op meerdere talen. Deze kunnen we echter in realiteit niet implementeren zoals we net beschreven hebben.
@@ -87,4 +87,4 @@ Dit is inderdaad zeer gelijkend op het eerste deel van deze vraag. In plaats van
 	Indien $A \leq_m B$ dan is ook $A \leq_T B$. M.a.w. $\leq_m$ is fijner dan $\leq_T$.
 \end{theorem}
 
-Dit is vanzelfsprekend indien we beseffen dat het orakel een theoretische uitbreiding is op de Turingmachine. We gebruiken de Turingmachines om talen te herkennen of the beslissen. Het is mogelijk zo een machine te implementeren in een taal naar keuze. Er is echter een grens op het aantal talen dat we kunnen beslissen, aangezien een aantal in een oneindige lus kunnen komen tijdens het beslissingsproces. Dit is een probleem dat we in de praktijk kunnen tegenkomen. Een theoretische oplossing daarvoor is de orakelmachine. We kunnen deze machine wel gebruiken om theoretisch verder te redeneren. Dit will zeggen dat het orakel alle talen beslist dit een Turingmachine kan besliseen, plus de talen die een turingmachine niet kan beslissen (oneindig lus). Hierdoor is $A \leq_m B$ fijner dan $A \leq_T B$.
+Dit is vanzelfsprekend indien we beseffen dat het orakel een theoretische uitbreiding is op de Turingmachine. We gebruiken de Turingmachines om talen te herkennen of the beslissen. Het is mogelijk zo een machine te implementeren in een taal naar keuze. Er is echter een grens op het aantal talen dat we kunnen beslissen, aangezien een aantal in een oneindige lus kunnen komen tijdens het beslissingsproces. Dit is een probleem dat we in de praktijk kunnen tegenkomen. Een theoretische oplossing daarvoor is de orakelmachine. We kunnen deze machine wel gebruiken om theoretisch verder te redeneren. Dit will zeggen dat het orakel alle talen beslist dit een Turingmachine kan beslissen, plus de talen die een turingmachine niet kan beslissen (oneindig lus). Hierdoor is $A \leq_m B$ fijner dan $A \leq_T B$.

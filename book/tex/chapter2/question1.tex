@@ -2,7 +2,7 @@
 	Bewijs dat $A_{TM}$ niet beslisbaar is en steun daarbij niet op de stelling van \textit{Rice}. Zou het helpen als het toegelaten was op de stelling van \textit{Rice} te steunen? Is $A_{TM}$ herkenbaar? Co-herkenbaar?
 \end{quest}
 
-We hebben het hier over het acceptatieprobleem voor Turinmachines. We noemen de taal $A_{TM}$ met de volgende formele definitie. Informeel is elk element een tuple met het eerste element een ge\"encodeerde Turingmachine die de string $s$, het tweede element, accepteerd.
+We hebben het hier over het acceptatieprobleem voor Turingmachines. We noemen de taal $A_{TM}$ met de volgende formele definitie. Informeel is elk element een tuple met het eerste element een ge\"encodeerde Turingmachine die de string $s$, het tweede element, accepteert.
 \begin{center}
 	$A_{TM} = \{ <M,s> |$ \textit{$M$ is een Turingmachine en} $ s \in L_M\}$
 \end{center}
@@ -39,11 +39,11 @@ We hebben het hier over het acceptatieprobleem voor Turinmachines. We noemen de 
 	Voor elke niet-triviale, taal-invariante eigenschap $P$ van Turingmachines geldt dat $Pos_P$ (en ook $Neg_P$) niet beslisbaar is.
 \end{theorem}
 
-Met deze stelling zouden we het hele bewijs kunnen inkorten. Door een niet-triviale, taal-invariante eigenschap $P$ te vinden van alle Turingmachines die $s$ herkennen, hebben we meteen aangetoond dat de taal in kwestie, $A_{TM}$ niet beslisbaar is.\footnote{Voor meer informatie over het bewijs, zie het laatste hoofdstuk.} Deze taal komt dan overeen met $Pos_P$. Een eigenschap van $<M,s>$ is bijvoorbeeld dat $M$ $s$ accepteerd. $Pos_p = A_{TM}$ en dus is $A_{TM}$ niet beslisbaar.
+Met deze stelling zouden we het hele bewijs kunnen inkorten. Door een niet-triviale, taal-invariante eigenschap $P$ te vinden van alle Turingmachines die $s$ herkennen, hebben we meteen aangetoond dat de taal in kwestie, $A_{TM}$ niet beslisbaar is.\footnote{Voor meer informatie over het bewijs, zie het laatste hoofdstuk.} Deze taal komt dan overeen met $Pos_P$. Een eigenschap van $<M,s>$ is bijvoorbeeld dat $M$ $s$ accepteert. $Pos_p = A_{TM}$ en dus is $A_{TM}$ niet beslisbaar.
 
 \subsubsection*{$A_{TM}$ is herkenbaar}
 \begin{proof}
-	De herkenner $A$ voor $A_{TM}$ laat, met input $<M,s>$, $M$ lopen op $s$. Indien deze $M$ $s$ accepteerd, dan accepteerd $A$ zijn input. Indien deze de input $reject$, of gewoon niet stopt, dan zal $A$ deze ook niet accepteren. $A_{TM}$ is dus herkenbaar (ook hier zien we dat $A_{TM}$ niet beslisbaar is omdat deze kan blijven lopen).
+	De herkenner $A$ voor $A_{TM}$ laat, met input $<M,s>$, $M$ lopen op $s$. Indien deze $M$ $s$ accepteert, dan accepteert $A$ zijn input. Indien deze de input $reject$, of gewoon niet stopt, dan zal $A$ deze ook niet accepteren. $A_{TM}$ is dus herkenbaar (ook hier zien we dat $A_{TM}$ niet beslisbaar is omdat deze kan blijven lopen).
 \end{proof}
 
 \subsubsection*{$A_{TM}$ is niet co-herkenbaar}

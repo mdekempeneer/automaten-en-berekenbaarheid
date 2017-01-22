@@ -19,13 +19,13 @@ Met $Q$ de huidige toestang en $\Gamma$ het te lezen symbool. Als output een nie
 \end{theorem}
 
 \begin{proof}
-	\textbf{Elke taal door een enumerator bepaald is herkenbaar.} Neem de Turingmachine $T$ voor de taal $L$, bepaald door een gegeven enumerator $E$. Laat $T$ nu $E$ als een subroutine gebruiken. $T$ neemt een string $s$ aan. Telkens $E$ in $q_e$ komt zal $T$ de laatst geproduceerde outputstring lezen op de outputband van $E$. Indien deze gelijk is aan de inputstring $s$, dan accepteert $T$ $s$. Indien dit niet zo is, gaat de enumerator doorrrekenen\footnote{De enumerator kan dus oneindig blijven doorrekenen waardoor de taal door een enumerator bepaald herkenbaar en niet beslisbaar is.}.
+	\textbf{Elke taal door een enumerator bepaald is herkenbaar.} Neem de Turingmachine $T$ voor de taal $L$, bepaald door een gegeven enumerator $E$. Laat $T$ nu $E$ als een subroutine gebruiken. $T$ neemt een string $s$ aan. Telkens $E$ in $q_e$ komt zal $T$ de laatst geproduceerde outputstring lezen op de outputband van $E$. Indien deze gelijk is aan de inputstring $s$, dan accepteert $T$ $s$. Indien dit niet zo is, gaat de enumerator doorrekenen\footnote{De enumerator kan dus oneindig blijven doorrekenen waardoor de taal door een enumerator bepaald herkenbaar en niet beslisbaar is.}.
 \end{proof}
 
 \begin{proof}
 	\textbf{Elke herkenbare taal wordt ge\"enumereerd door een enumerator.} Neem de Turingmachine $T$ die de willekeurige taal $L$ herkent. Het is voldoende een enumerator $E$ te construeren die $L$ enumereert\footnote{Indien dit lukt is dit mogelijk voor elke $L$, aangezien $L$ willekeurig is.}. Om $E$ op te stellen, maken we gebruik van enkele hulpmachines.\\
 	\begin{enumerate}
-		\item Een machine $T_{gen}$ die voor een gegeven getal $n$ de eerste $n$ strings uit $\Sigma^*$ genereerd\footnote{Namelijk $s_1,s_2, \dots ,s_n$.}. Deze $T_{gen}$ zal de strings op de band van $E$ plaatsen.
+		\item Een machine $T_{gen}$ die voor een gegeven getal $n$ de eerste $n$ strings uit $\Sigma^*$ genereert\footnote{Namelijk $s_1,s_2, \dots ,s_n$.}. Deze $T_{gen}$ zal de strings op de band van $E$ plaatsen.
 		\item $T_n$  zal op elk van de gegeven $n$ strings, $n$ stappen van $T$ uitvoeren. Het zal dus het aantal stappen van $T$ limiteren zodat deze niet in een oneindige lus kan gaan voor de strings die niet worden herkend. Waarom doen we dit? We willen eigenlijk alle strings overlopen\footnote{Die mogelijk zijn op het alfabet $\Sigma$.} en daar de aanvaardbare strings ($s \in L$) uit filteren. Deze behoren tot de herkenbare taal $L$. Hierdoor moeten we ook de strings nakijken die niet tot $L$ behoren. Deze kunnen er echter voor zorgen dat de $T$ in een oneindige lus gaat. Daarom limiteren we het aantal stappen zodat ook $E$ niet oneindig moet blijven wachten. Indien $T$ de string aanvaardt, plaatst $E$ de string op de outputband. Indien $T$ deze niet aanvaard of niet ge\"eindigd is in $\leq n$ stappen, dan zal $E$ de string niet schrijven.
 		\item $T_{driver}$ zal een opeenvolging van getallen $n$ genereren om de voorgaande machines op te stellen en $T_{gen}$ en $T_n$ oproepen.\\
 	\end{enumerate}

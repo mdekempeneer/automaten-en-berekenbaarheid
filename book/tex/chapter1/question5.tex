@@ -16,11 +16,11 @@
   Dan spreken we van een Myhill-Nerode relatie voor $L$ (oftewel $MN(L)$) indien de \emph{DFA} de taal \emph{L} bepaalt.
 \end{theorem}
 
-Dit heeft zin aangezien de drie eigenschappen verwijzen naar \emph{L}. Hierdoor kunnen we, vertrekkend van een \emph{DFA} die \emph{L} accepteert, een $MN(L)$ relatie contrueren op $\Sigma^*$.
+Dit heeft zin aangezien de drie eigenschappen verwijzen naar \emph{L}. Hierdoor kunnen we, vertrekkend van een \emph{DFA} die \emph{L} accepteert, een $MN(L)$ relatie construeren op $\Sigma^*$.
 
 \subsubsection*{L is regulier}
 
-We kunnen ook het omgekeerde doen en dus, vertrekkende uit $MN(L)$ een \emph{DFA} contrueren zodat $L_{DFA} = L$.
+We kunnen ook het omgekeerde doen en dus, vertrekkende uit $MN(L)$ een \emph{DFA} construeren zodat $L_{DFA} = L$.
 
 \begin{theorem}
   Gegeven een taal \emph{L} over $\Sigma$ en een $MN(L)$-relatie $\sim$ op $\Sigma^*$, dan definieert $(Q,\Sigma,\delta,q_s,F)$ een \emph{DFA} die \emph{L} bepaalt, waarbij
@@ -35,7 +35,7 @@ We kunnen ook het omgekeerde doen en dus, vertrekkende uit $MN(L)$ een \emph{DFA
 \begin{proof}
   Dat $\delta$ goed gedefinieerd is, kan je bewijzen door gebruik te maken van de rechtse congruentie van $\sim$. Verder zijn alle andere ingredi\"enten van de \emph{DFA} duidelijk, in het bijzonder ook dat $Q$ (en $F$) slechts een eindig aantal toestanden bevat. We moeten enkel nog bewijzen dat $L_{DFA} = L$. Stel dat $x$ geaccepteerd wordt door de \emph{DFA}.
   $$x \in L_{DFA} \iff \delta(q_s, x) \in F$$
-  Uit de definitie van de \emph{DFA} kunnen we zeggen dat $q_s = \epsilon_{\sim}$. Dus $\delta(\epsilon_{\sim},x) \in F$. De toestand waaring string $x$ komt kunnen we schrijven als $x_{\sim}$ (zie punt 1). We kunnen dus het volgende besluiten.
+  Uit de definitie van de \emph{DFA} kunnen we zeggen dat $q_s = \epsilon_{\sim}$. Dus $\delta(\epsilon_{\sim},x) \in F$. De toestand waarin string $x$ komt kunnen we schrijven als $x_{\sim}$ (zie punt 1). We kunnen dus het volgende besluiten.
   $$\delta(\epsilon_{\sim},x) \in F \iff x_{\sim} \in F$$
   Aangezien dit laatste geldt, kunnen we zeggen dat $x \in L$. Er bestaat dus een \emph{DFA} voor \emph{L}, dus \emph{L} is regulier.
 \end{proof}
@@ -48,4 +48,4 @@ Dit is zeker mogelijk aangezien er ook oneindig veel (niet-isomorfe) \emph{DFA's
 
 Het principe blijft volledig hetzelfde. Echter was het bij een \emph{DFA} genoeg om enkel ervoor te zorgen dat de toestand hetzelfde was voor twee strings $x$ en $y$ om deze als equivalent te beschouwen. Indien we specifiek naar een \emph{PDA} kijken, dan moeten we een toestand niet individueel bekijken, maar in combinatie met de stack. Twee strings $x$ en $y$ zijn dan equivalent indien zowel de toestand waarin ze eindigen, als de stack, gelijk zijn.\\
 
-Het probleem is echter dat de stack oneindig veel mogelijkheden heeft en dus heet de equivalentierelatie geen eindige index. Het is dus geen Myhill-Neroderelate, wel een equivalentierelatie.
+Het probleem is echter dat de stack oneindig veel mogelijkheden heeft en dus heet de equivalentierelatie geen eindige index. Het is dus geen Myhill-Neroderelatie, wel een equivalentierelatie.
