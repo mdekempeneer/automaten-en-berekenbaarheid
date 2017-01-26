@@ -37,7 +37,7 @@ Aangezien we weten dat de minimale \emph{DFA}, bekomen uit het algoritme dat we 
 
 	Vermits in $DFA_1$ elke toestand bereikbaar is, bestaan er strings $s_i$ met $i=1 \dots n$ zodanig dat $\delta_1^*(q_s,s_i)=q_i \in Q_1$. Vermits $DFA_2$ minder toestanden heeft, moet voor een $i \neq j$ er een string $s_j$ bestaan die in dezelfde toestand eindigt\footnote{Aangezien deze minder toestanden heeft en er dus meerdere strings moeten eindigen in \'e\'en toestand.}. We zeggen dus dat $\delta^*_2(p_s,s_i)=\delta^*_2(p_s,s_j)$. Vermits $q_i$ en $q_j$ \textit{f-verschillend} zijn, bestaat een string $v$ zodanig dat $\delta_1^*(q_i, v)\in F_1$ en $\delta^*_1(q_j,v) \notin F_1$ of omgekeerd.\\
 
-	Dus ook $\delta_1^*(q_i, s_i v)\in F_1 \and \delta^*_1(q_j,s_i v) \notin F_1$ of omgekeerd. Dit betekent dat van de strings $s_i v$ en $s_j v$ de $DFA_1$ er juist \'e\'en accepteert.\\
+	Dus ook $\delta_1^*(q_i, s_i v)\in F_1 \wedge \delta^*_1(q_j,s_i v) \notin F_1$ of omgekeerd. Dit betekent dat van de strings $s_i v$ en $s_j v$ de $DFA_1$ er juist \'e\'en accepteert.\\
 
 	Maar: $\delta_2^*(p_s,s_i v) = \delta_2^*(\delta_2^*(p_s,s_i),v) = \delta_2^*(\delta_2^*(p_s,s_j),v) = \delta_2^*(p_s,s_j v)$ hetgeen betekent dat $DFA_2$ ofwel beide strings $s_iv$ en $s_jv$ accepteert, of beide verwerpt.
 

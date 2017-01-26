@@ -40,7 +40,7 @@ We kunnen ook het omgekeerde doen en dus, vertrekkende uit $MN(L)$ een \emph{DFA
   Aangezien dit laatste geldt, kunnen we zeggen dat $x \in L$. Er bestaat dus een \emph{DFA} voor \emph{L}, dus \emph{L} is regulier.
 \end{proof}
 
-\subsubsection*{Meerde MN(L) relaties}
+\subsubsection*{Meerdere MN(L) relaties}
 
 Dit is zeker mogelijk aangezien er ook oneindig veel (niet-isomorfe) \emph{DFA's} bestaan die taal \emph{L} aanvaarden.
 
@@ -48,4 +48,4 @@ Dit is zeker mogelijk aangezien er ook oneindig veel (niet-isomorfe) \emph{DFA's
 
 Het principe blijft volledig hetzelfde. Echter was het bij een \emph{DFA} genoeg om enkel ervoor te zorgen dat de toestand hetzelfde was voor twee strings $x$ en $y$ om deze als equivalent te beschouwen. Indien we specifiek naar een \emph{PDA} kijken, dan moeten we een toestand niet individueel bekijken, maar in combinatie met de stack. Twee strings $x$ en $y$ zijn dan equivalent indien zowel de toestand waarin ze eindigen, als de stack, gelijk zijn.\\
 
-Het probleem is echter dat de stack oneindig veel mogelijkheden heeft en dus heet de equivalentierelatie geen eindige index. Het is dus geen Myhill-Neroderelatie, wel een equivalentierelatie.
+Het probleem is echter dat de stack oneindig veel mogelijkheden heeft en dus heeft de equivalentierelatie geen eindige index. Het is dus geen Myhill-Neroderelatie, wel een equivalentierelatie.
